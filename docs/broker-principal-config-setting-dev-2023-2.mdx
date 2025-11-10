@@ -1,0 +1,95 @@
+---
+title: "Broker Principal Config Setting"
+description: "To improve the capabilities of the Itential platform, the ability to build principal objects via broker calls to a local AAA adapter is supported. This configuration setting (`brokerPrincipal`) can be found within the `authenticationProps` of an active profile and it allows an AAA adapter to define a buildPrincipal function (i.e., create principal objects) instead of the Session Manager module."
+---
+
+To improve the capabilities of the Itential platform, the ability to build principal objects via broker calls to a local AAA adapter is supported. This configuration setting (`brokerPrincipal`) can be found within the `authenticationProps` of an active profile and it allows an AAA adapter to define a buildPrincipal function (i.e., create principal objects) instead of the Session Manager module.
+
+*Sample profile schema for brokerPrincipal*
+
+```JSON JSON
+},
+ "brokerPrincipal": {
+    "$id": "#/properties/authenticationProps/properties/brokerPrincipal",
+    "type": "boolean",
+    "description": "When brokerPrincipal is set to true, the AAA adapter will be responsible for creating a principal.",
+    "title": "Broker Principal",
+    "default": false,
+    "examples": [false]
+}
+```
+
+<Info>
+**Note:**
+
+For more information on the authentication properties in `authenticationProps`, see [Itential Configuration](https://docs.itential.com/docs/profile-properties-2023-2?highlight=authenticationprops).
+</Info>
+
+## How to Use the Broker Principal Setting
+
+To use this feature in developing a custom auth adapter:
+
+<Steps>
+<Step>
+Add the following code to your Local AAA adapter (at the end of the file before the export statement) and change the console log level to debug.
+	```json expandable
+	--- BEGIN CODE ---
+	const buildAnonymousPrincipal = function () {
+	return {
+	id: 9999,
+	provenance: 'Pronghorn',
+	username: 'anonymous',
+	firstname: 'anonymous',
+	groups: [],
+	roles: [],
+	allowedMethods: [],
+	allowedViews: [],
+	routes: [],
+	};
+	}
+	/**
+	Make sure a principal is stashed in redis
+	@param {string} accountId
+	*/
+	local_aaa.prototype.buildPrincipal = async function (accountId, callback) {
+	const promised = new Promise((resolve, reject) => {
+	console.log('START!')
+	setTimeout(() => {
+	console.log(I did a thing to build principal);
+	resolve();
+	}, 3000);
+	});
+	await promised;
+	callback(buildAnonymousPrincipal());
+	}
+	--- END CODE ---
+	```
+</Step>
+<Step>
+  Restart Itential Platform with the code changes.
+</Step>
+<Step>
+Login to Itential Platform as admin.
+</Step>
+<Step>
+Navigate to Admin Essentials → Profiles → Select the active profile → Configure → authenticationProps Schema.
+</Step>
+<Step>
+Verify there is a checkbox for **Broker Principal** (unchecked).
+<Frame caption="Figure 1">
+	![Figure 01](https://cdn.document360.io/608a5b1c-c031-48b8-8c28-fe71e0b4e64a/Images/Documentation/01-authenticationProps-22.1.png?sv=2022-11-02&spr=https&st=2025-11-03T14%3A55%3A04Z&se=2025-11-03T15%3A06%3A04Z&sr=c&sp=r&sig=994B5z2tR6J6bhy2HyN0OtoYO30%2BISRVDJj6zHpvkXs%3D)
+</Frame>
+</Step>
+<Step>
+Check the **Broker Principal** box and save the profile.
+</Step>
+<Step>
+Restart Itential Platform.
+</Step>
+<Step>
+Login to Itential Platform as admin.
+</Step>
+<Step>
+Upon login, you should have no permissions as you are using the equivalent of an anonymous principal. This verifies the local AAA adapter `buildPrincipal` function is being called.
+</Step>
+</Steps>

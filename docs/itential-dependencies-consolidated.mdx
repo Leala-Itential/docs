@@ -1,0 +1,287 @@
+---
+title: "Itential Dependencies"
+description: "This page presents a consolidated list of software dependencies for each Itential Platform and IAG release, along with product release notes for Itential Platform and Itential Automation Gateway (IAG). All of the dependencies herein have been tested against both Itential Platform and IAG. Moreover, the versions we support have been thoroughly tested and certified to ensure Itential is using the most up-to-date dependencies."
+---
+
+
+
+
+## Monthly Maintenance Release
+
+**JULY 2025**
+
+<CardGroup cols={2}>
+  <Card title="Itential Platform: Release 2" icon="angles-right" href="https://docs.itential.com/docs/july-2025-maintenance-release-2" horizontal/>
+  <Card title="Itential Platform: Release 1" icon="angles-right" href="https://docs.itential.com/docs/july-2025-maintenance-release-itential-platform" horizontal/>
+  <Card title="Itential Automation Gateway" icon="angles-right" href="https://docs.itential.com/docs/july-2025-iag-maintenance-release" horizontal/>
+</CardGroup>
+
+## Release Notes
+
+These release note collections serve as a record of all product improvements, new features, bug fixes, and other enhancements made in the software versions of Itential Platform.
+
+### Itential Platform
+
+<CardGroup cols={2}>
+  <Card title="Platform 6" icon="angles-right" href="https://docs.itential.com/docs/platform-6-release-notes" horizontal/>
+  <Card title="2023.2" icon="angles-right" href="https://docs.itential.com/docs/itential-platform-20232-release-notes" horizontal/>
+  <Card title="2023.1" icon="angles-right" href="https://docs.itential.com/docs/itential-platform-20231-release-notes" horizontal/>
+  <Card title="2022.1" icon="angles-right" href="https://docs.itential.com/docs/itential-platform-20221-release-notes" horizontal/>
+</CardGroup>
+
+### Itential Automation Gateway
+
+<CardGroup cols={2}>
+  <Card title="IAG/4.3" icon="angles-right" href="https://docs.itential.com/docs/iag-43-release-notes-1" horizontal/>
+  <Card title="2023.3" icon="angles-right" href="https://docs.itential.com/v1/docs/iag-20233-release-notes" horizontal/>
+  <Card title="2023.2" icon="angles-right" href="https://docs.itential.com/docs/iag-20232-release-notes" horizontal/>
+  <Card title="2023.1" icon="angles-right" href="https://docs.itential.com/docs/iag-20231-release-notes" horizontal/>
+  <Card title="2022.1" icon="angles-right" href="https://docs.itential.com/docs/iag-20221-release-notes" horizontal/>
+</CardGroup>
+
+### Gateway Manager
+
+<CardGroup cols={2}>
+<Card title="Gateway Manager 1.0" icon="angles-right" href="https://docs.itential.com/v1/docs/gateway-manager-release-notes" horizontal/>
+</CardGroup>
+
+## Host Operating System
+
+Itential Platform, Itential Automation Gateway (IAG), and Gateway Manager are supported on the following operating systems.
+
+**Itential Platform**
+
+| Version | Operating System | Release | Production | Development |
+| :--- | :--- | :--- | :--- | :--- |
+| Platform 6 | RHEL 64-Bit | RHEL 8/9 <br/> Rocky 8/9 | x | x |
+| 2023.2 | RHEL 64-Bit | RHEL 8/9 <br/> Rocky 8/9 | x | x |
+| 2023.1 | RHEL 64-Bit | RHEL 8/9 <br/> Rocky 8/9 | x | x |
+| 2022.1 | RHEL 64-Bit | RHEL 8 | x | x |
+
+**IAG**
+
+| IAG Version | Operating System | Release | Production | Development |
+| :--- | :--- | :--- | :--- | :--- |
+| 5.1 | RHEL 64-Bit | RHEL 8/9 <br/> Rocky 8/9 | x | x |
+| 4.3 | RHEL 64-Bit | RHEL 8/9 <br/> Rocky 8/9 | x | x |
+| 2023.3 | RHEL 64-Bit | RHEL 8/9 <br/> Rocky 8/9 | x | x |
+| 2023.2 | Rocky 64-Bit | RHEL 8/9 <br/> Rocky 8/9 | x | x |
+| 2023.1 | Rocky 64-Bit | RHEL 8/9 <br/> Rocky 8/9 | x | x |
+| 2022.1 | Rocky 64-Bit | RHEL 8/9 <br/> Rocky 8/9 | x | x |
+
+**Gateway Manager**
+
+| Gateway Manager Version | Operating System | Release | Production | Development |
+| :--- | :--- | :--- | :--- | :--- |
+| 1.0 | RHEL 64-Bit | RHEL 8/9 <br/> Rocky 8/9 | x | x |
+
+## Itential Platform Server
+
+| Release Version | nodejs | python | pip | MarkupSafe (pip package) | textfsm | Jinja2 |
+| :--- | :--- | :--- | :--- | :--- | :--- | :--- |
+| Platform 6 | 20.x | 3.11.x | \>= 22.3.1 | 2.1.4 | 1.1.3 | 3.1.2 |
+| 2023.2 | 20.3.0 | 3.11.7 |  |  | 1.1.3 | 3.1.2 |
+| 2023.1 | \>=18.15.0 \<19.0.0 | \>=3.9.5 | \>=20.2.4 | 2.0.1 | \>=1.1.2 \<1.2.0 | \>=2.11.3 \<2.12.0 |
+| 2022.1 | 16.20.1 or 14.18.0\*\* (EOL) | 3.9 | \>=20.2.4 | 2.0.1 | \>=1.1.2 \<1.2.0 | \>=2.11.3 \<2.12.0 |
+
+<Note>
+*Notes:*
+
+*\- The gcc-c++ and make packages should be installed from your OS distribution.*
+*\- The gcc is only required for installation and can be safely removed after a successful install. The gcc is not needed for operation.*
+*\- Jinja2 depends on the MarkupSafe module.*
+</Note>
+
+<Info>
+**\*\*** Node version 14.18.0 is compatible with the indicated release versions; however, this version of Node is EOL (end of life) and Itential does not recommend or support its use. Itential recommends Node 16.20.1 for the Itential Platform versions indicated.
+</Info>
+
+### MongoDB Server
+
+| Itential Platform Version | MongoDB |
+| :--- | :--- |
+| Platform 6 | 7.0 or 8.0 |
+| 2023.2 | 7.0 |
+| 2023.1 | 5.0 or 6.0 |
+| 2022.1 | 5.0 or 6.0 |
+
+### RabbitMQ Server
+
+| Itential Platform Version | rabbitmq | erlang | elixir / dedup plugins |
+| :--- | :--- | :--- | :--- |
+| 2023.2 | N/A   No longer needed | N/A | N/A |
+| 2023.1 | 3.12.10 | RabbitMQ Erlang/OTP | Event Deduplication |
+| 2022.1 | 3.12.10 | RabbitMQ Erlang/OTP | Event Deduplication |
+
+<Note>
+Related reading:
+
+<CardGroup cols={2}>
+  <Card title="RabbitMQ Erlang/OTP" icon="angles-right" href="https://docs.itential.com/docs/rabbitmq-configuration-20231x-20221x" horizontal/>
+  <Card title="Event Deduplication" icon="angles-right" href="https://docs.itential.com/docs/event-service-configuration-itential-platform" horizontal/>
+</CardGroup>
+</Note>
+
+### Redis Server
+
+| Itential Platform Version | Redis Server |
+| :--- | :--- |
+| Platform 6 | 7.0, 7.4 |
+| 2023.2 | 7.2 |
+| 2023.1 | \>=7.0.0 < 7.1.0 |
+| 2022.1 | 6.2.10 |
+
+<Note>
+*Notes:*
+
+*\- The gcc-c++ and make packages should be installed from your OS distribution.*
+*\- The gcc is only required for installation and can be safely removed after a successful install. The gcc is not needed for operation.*
+</Note>
+
+### CyberArk CCP
+
+| Itential Platform Version | CyberArk CCP |
+| :--- | :--- |
+| Platform 6 | 12.6 <br/> 13.0 <br/> 14.0 <br/> 14.2 |
+| 2023.2 | 12.6 <br/> 13.0 <br/> 14.0 <br/> 14.2 |
+
+Support for CyberArk CCP was introduced in Platform 6.0.7 and 2023.2.23. For more information, see [CyberArk Central Credential Provider Integration](https://docs.itential.com/v1/docs/cyberark-central-credential-provider-integration).
+
+### HashiCorp Vault
+
+| Itential Platform Version | Vault |
+| :--- | :--- |
+| Platform 6 | 1.15.4 |
+| 2023.2 | 1.15.4 |
+| 2023.1 | \>=1.13.1 \<2.0.0 |
+| 2023.1 | \>=1.13.1 \<2.0.0 |
+| 2022.1 | \>=1.0.0 \<2.0.0 |
+
+Itential supports the use of a variety of third-party integrations to further enhance the capabilities of the Itential Platform. **Cisco Network Services Orchestrator (NSO)** is one such integration. To ensure that NSO functions as intended, it is important to understand which NSO versions are supported for each Itential Platform version. This document provides information to help you determine which version of NSO is compatible with your IItential Platform environment.
+
+## Automation Gateway
+
+| IAG Version | python | openssl | haproxy | pip | terraform | nornir | netmiko |
+| :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
+| 4.3 | 3.9.x | \>=1.1.0 \<1.2.0 | \>=2.0.0 \<3.0.0 | 20.2.4 | 1.2.9 | \>=3.0.0 \<4.0.0 | 4.1.2 |
+| 2023.3 | 3.9.x | \>=1.1.0 \<1.2.0 | \>=2.0.0 \<3.0.0 | 20.2.4 | 1.2.9 | \>=3.0.0 \<4.0.0 | 4.1.2 |
+| 2023.2 | 3.9.x | \>=1.1.0 \<1.2.0 | \>=2.0.0 \<3.0.0 | 20.2.4 | 1.2.9 | \>=3.0.0 \<4.0.0 | 4.1.2 |
+| 2023.1 | 3.9.x | \>=1.1.0 \<1.2.0 | \>=2.0.0 \<3.0.0 | 20.2.4 | 1.2.9 | \>=3.0.0 \<4.0.0 | 4.1.2 |
+| 2022.1 | \>=3.9.5 \<4.0.0 | \>=1.1.0 \<1.2.0 | \>=2.0.0 \<3.0.0 | 20.2.4 | \>=0.12.0 \<0.13.0 | \>=3.0.0 \<4.0.0 | \>=3.0.0 \<4.0.0 |
+
+<Note>
+*Notes:*
+\-*The following grpc pinned libraries are used to test IAG: pygnmi==0.8.9, grpcio==1.53.0*.
+*\- The gcc-c++ and make packages should be installed from your OS distribution.*
+*\- The gcc is only required for installation and can be safely removed after a successful install. The gcc is not needed for operation.*
+*\- The following development packages are required to install Automation Gateway: libffi-dev, openssl-dev, python-dev, sqlite-dev.*
+*\- One or more of the following packages may be required by the specific Ansible modules you're using: psutil, pycrypto, paramiko, ncclient, lxml, nitrosdk-python, jxmlease.*
+*\- Check the [Ansible documentation](https://docs.ansible.com/) for the roles you're planning to use for additional package requirements.*
+</Note>
+
+### Ansible
+
+| IAG Version | ansible | ansible core | ansible community |
+| :--- | :--- | :--- | :--- |
+| 4.3 | \>= 2.9.0 < 2.11.0 | \>= 2.13.0 < 2.15 | \>= 6.0 < 8.0 |
+| 2023.3 | \>= 2.9.0 \<2.11.0 | \>= 2.13.0 \<2.15 | \>= 6.0 \<8.0 |
+| 2023.2 | \>= 2.9.0 \<2.11.0 | \>= 2.13.0 \<2.15 | \>= 6.0 \<8.0 |
+| 2023.1 | \>= 2.9.0 \<2.11.0 | \>= 2.13.0 \<2.15 | \>= 6.0 \<8.0 |
+| 2022.1 | \>= 2.9.0 \<2.11.0 |  |  |
+
+<Note>
+*Notes:*
+*\- Prior to IAG 2023.1, Itential supported `ansible` up to version 2.10.*
+*\- Ansible changed its versioning after 2.10 to release both the `ansible-core` and `ansible-community` packages.*
+*\- Check the [Ansible release documentation](https://docs.ansible.com/ansible/latest/reference_appendices/release_and_maintenance.html) for details.*
+</Note>
+
+### IAG Compatibility with Itential Platform
+
+All supported versions of Itential Automation Gateway (IAG) are tested for compatibility with supported versions of Itential Platform. However, IAG 5.1 is only compatible with Platform 6 and 2023.2. Please note that new features added in various versions of IAG might not be available in all versions of Itential Platform because a specific version of the Platform may lack the functionality to make use of that feature.
+
+Refer to the following table to identify the IAG versions compatible with Itential Platform versions.
+
+| Itential Platform Version | IAG/2022.1 | IAG/2023.1 | IAG/2023.2 | IAG/2023.3 | IAG/4.3 | IAG/5.1 |
+| :--- | :--- | :--- | :--- | :--- | :--- | :--- |
+| Itential Cloud - Hosted Version 2023.2 (as of July 15, 2025) | Yes | Yes | Yes | Yes | Yes | Yes |
+| Platform 6.0.0 | Yes | Yes | Yes | Yes | Yes | Yes |
+| 2023.2 | Yes | Yes | Yes | Yes | Yes | Yes |
+| 2023.1 | Yes | Yes | Yes | Yes | Yes | No |
+| 2022.1 | Yes | Yes | Yes | Yes | Yes | No |
+
+<Info>
+If a version of Itential Platform does not provide support for a feature in a version of IAG, the versions remain compatible, but Itential Platform will not be able to use that feature in IAG.
+</Info>
+
+### IAG Versioning Practices
+
+All supported versions of IAG are assigned unique identifiers (version numbers) to help manage different versions and releases of the software to ensure customers can access the correct version they need.
+
+Here's an explanation of how Itential names IAG versions to help you understand the nature of changes between versions:
+
+- **Component Version** - This identifies the build version of the Platform application (i.e., IAG) distributed in a maintenance release. For each change made to the source code as part of a development build, whether it's a bug fix or improvement, there is a `component` version bump. Components are versioned independently of product release versions. Also, multiple builds can be created for a single **Release Version**.
+- **Release Version** - This identifies the Platform release version of IAG made available to customers in a maintenance release. Release versioning helps to track different iterations of the software and increments each month as part of the maintenance release.
+
+Each versioning scheme is purposely designed to provide a structured mechanism of releasing and tracking Itential's product versions, enabling developers to identify bugs more efficiently and maintain code integrity.
+
+If you need additional support or require more information about Itential's versioning, please contact our [Product Support Team](https://itential.atlassian.net/servicedesk/customer/portals).
+
+## NSO / Itential Tools
+
+| Itential Platform Version | Package | Supported |
+| :--- | :--- | :--- |
+| Platform 6 | java | \>=1.70 \<1.9.0 |
+| 2023.2 | java | \>=1.70 \<1.9.0 |
+| 2023.1 | java | \>=1.70 \<1.9.0 |
+| 2022.1 | java | \>=1.70 \<1.9.0 |
+| 2021.2 | java | \>=1.70 \<1.9.0 |
+
+<Note>
+*Note: The ant package should be installed from your OS distribution.*
+</Note>
+
+## NSO Support Policy
+
+The Itential Platform supports integration with tested and verified versions of NSO, which may vary for each version of Itential Platform. To this end, Itential will address any errors or flaws that affect the integration of supported NSO versions into Itential Platform. All patch releases (denoted by the third digit in the NSO version number) for supported NSO versions are covered by this policy.
+
+<Warning>
+Itential is **not** responsible for the development or support of NSO itself.
+</Warning>
+
+### Versions Currently Supported
+
+Supported versions of NSO are defined in the Release Notes of each version of Itential Platform. In the **Devices/Services Compatibility** section of the release notes, the NSO versions used for testing are listed in the **NSO Versions** table. When viewing this table, note that the [support policy](/docs/itential-dependencies-consolidated#nso-support-policy) defined above applies. Though a specific patch release for each NSO version may be listed in the table, **any** patch release for that NSO version is supported.
+
+<Warning>
+When planning to integrate NSO into Itential Platform, keep **long-term support (LTS)** versions of NSO in mind. Details regarding the support of LTS versions of NSO can be found in the [next section](/docs/itential-dependencies-consolidated#aligning-with-cisco-support).
+</Warning>
+
+### Planned Future Support
+
+The following sections outline planned support for NSO that Itential is targeting for the future. As new versions of Itential Platform and NSO are released, testing will be required before certifying support.
+
+### Aligning With Cisco Support
+
+Moving forward, Itential will support any version of NSO that is supported by Cisco at that time, including LTS versions of NSO. For further information about the NSO version lifecycle, refer to the [Cisco End-of-Life and End-of-Sale Notices](https://www.cisco.com/c/en/us/products/cloud-systems-management/network-services-orchestrator/eos-eol-notice-listing.html).
+
+### Backporting Support
+
+Whenever a new version of NSO is released by Cisco, Itential will attempt to certify support of that NSO version for the latest existing release of IP.
+
+### NSO Version Support Matrix
+
+| NSO Version | 2022.1.x | 2023.1.x | 2023.2.x | Platform 6.0.x |
+| :--- | :--- | :--- | :--- | :--- |
+| 5.6.x | ✓ |  |  |  |
+| 5.7.x (LTS) | ✓ | ✓ | ✓ | ✓ |
+| 5.8.x \[1\] | ✓ | ✓ |  |  |
+| 6.0.x \[1\] | ✓ \[2\] | ✓ | ✓ |  |
+| 6.1.x (LTS) \[1\] | ✓ | ✓ | ✓ | ✓ |
+| 6.2.x \[1\] |  | ✓ \[2\] | ✓ | ✓ |
+| 6.3.x \[1\] |  | ✓ | ✓ \[2\] | ✓ |
+| 6.4.x \[1\] |  | ✓ | ✓ \[2\] | ✓ |
+
+**Footnotes**
+\[1\] NSO version numbers that are forecasted for release in the future are subject to change.
+\[2\] Itential Platform support for this future version of NSO will be backported once the NSO version is released by Cisco.

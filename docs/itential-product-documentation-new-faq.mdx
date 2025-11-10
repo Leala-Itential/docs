@@ -1,0 +1,107 @@
+---
+title: "What's New & FAQs"
+---
+
+## Feature Releases
+
+Read the feature details on Itential's software:
+
+**Itential Platform**
+
+<CardGroup cols={2}>
+  <Card title="Platform 6" icon="angles-right" href="https://docs.itential.com/docs/about-itential-platform-6-feature-release" horizontal/>
+  <Card title="2023.2" icon="angles-right" href="https://docs.itential.com/v1/docs/about-this-release-iap-2023-2" horizontal/>
+</CardGroup>
+
+
+**Itential Gateway Manager**
+
+<CardGroup cols={2}>
+<Card title="Gateway Manager" icon="angles-right" href="https://docs.itential.com/docs/gateway-manager-feature-release" horizontal/>
+</CardGroup>
+
+**Itential Automation Gateway (IAG)**
+
+<CardGroup cols={2}>
+  <Card title="IAG 5.1.0" icon="angles-right" href="https://docs.itential.com/docs/iag-510" horizontal/>
+  <Card title="IAG 4.3.0" icon="angles-right" href="https://docs.itential.com/docs/iag-430-feature-release" horizontal/>
+  <Card title="IAG 2023.3" icon="angles-right" href="https://docs.itential.com/docs/iag-20233-feature-release" horizontal/>
+</CardGroup>
+
+<Card title="For cloud documentation see → Itential Cloud" icon="angles-right" href="https://docs.itential.com/itential-cloud/docs" horizontal/>
+
+
+## 📍 EOS Announcement
+
+**Itential Platform and IAG versions 2023.1 will reach end of support on August 19, 2025**.
+
+**What this means for you:**
+
+- While we will continue to accept and review support tickets for Platform 2023.1 issues, upgrading to a currently supported version for any bug fixes or patches is recommended.
+- No new software maintenance releases will be provided for 2023.1 after this date
+- To ensure continued access to the latest features, security updates, and full support, we strongly recommend upgrading to a supported version
+
+**We're here to help:** Our support and professional services teams are available to assist with your upgrade planning and execution.
+
+| Release Version | End of Maintenance | End of Support |
+| :--- | :--- | :--- |
+| **2023.1** | April 19, 2025 | **Aug 19, 2025** |
+
+For more detail, refer to [Version Lifecycle](https://docs.itential.com/docs/itential-version-lifecycle).
+
+<Note>
+**Security Updates**
+
+To remediate high-severity security vulnerabilities, Itential may continue releasing security-only maintenance releases until end-of-support for Itential Platform and IAG versions even if no other defect fixes are planned for release.
+</Note>
+
+## 📍 Product Notices
+
+Important information about deprecations and breaking changes, along with monthly maintenance release notes, is available in our [**Product Notices**](https://docs.itential.com/docs/itential-product-notices).
+
+## 📍 FAQs
+
+This section gives quick answers to some common questions that tend to recur frequently.
+
+<AccordionGroup>
+  <Accordion title="Where can I find the software for download?">
+
+Software builds for download can be found in the **Itential Software Repository** for your deployment. If you do not have access to the repository, contact your Itential Account representative to obtain the necessary credentials.
+</Accordion>
+<Accordion title="Which browsers are supported by Itential Platform?">
+Itential Platform is compatible with the most current version of the following browsers:
+
+- Chrome
+  - Firefox
+  - Edge
+
+If you are unsure what version you are actually running, be sure to check. Itential's product [release notes](https://docs.itential.com/docs/itential-platform-maintenance-release-notes) contain Itential Platform Browser Compatibility for each feature and maintenance release.
+
+Use the following table to better understand the type of user action that is required for various form fields in Itential Platform. Depending on the browser, the message prompt for user input will vary.
+
+| Browser | Field Type | Message Prompt | Required User Action |
+| :--- | :--- | :--- | :--- |
+| Chrome | Text | None | Enter required text in the field. |
+| Chrome | Numerical | None | Enter the required numerical value. |
+| Chrome | Dropdown Menu | Please select an item in the list. | Select the appropriate item from the dropdown list. |
+| Firefox | Text | None | Enter required text in the field. |
+| Firefox | Numerical | Please enter a number. | Enter the required numerical value. |
+| Firefox | Dropdown Menu | Please select an item in the list. | Select the appropriate item from the dropdown list. |
+</Accordion>
+<Accordion title="Does the Platform collect any information from my system?">
+
+No, Itential Platform does not collect or report on any telemetric information from your system.
+
+</Accordion>
+<Accordion title="Does the NSO adapter have to be restarted to reflect a service pack upgrade in NSO?">
+
+Yes. The NSO adapter will read and compile the service model yang files at startup (APIs such as `runAction` and `getDevices` will continue to work even without an adapter restart).
+
+If you are using the NSO adapter for service operations (i.e., Service Manager, Form Builder, etc.), restart the adapter after updating the NSO service models and the adapter will re-read the yang files. If you have forms linked to the updated service models, you will likely have to rebuild some parts of these forms in addition to restarting the adapter to ensure the forms are aligned with the updated service model.
+</Accordion>
+<Accordion title="How do users submit a help desk ticket ?">
+
+You just need to access your Itential Service Desk (ISD) account and create a Product Support ticket. Learn more about creating a ticket through ISD [here](https://docs.itential.com/v1/docs/frequently-asked-questions).
+
+</Accordion>
+</AccordionGroup>

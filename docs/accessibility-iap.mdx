@@ -1,0 +1,135 @@
+---
+title: "Accessibility"
+---
+
+## Overview
+
+Making Itential Platform accessible means making it usable by everyone and making it possible for everyone to seamlessly connect their IT systems with network technologies for end-to-end network configuration, compliance, and automation.
+
+This guide provides accessibility information about the Platform user interface (UI) elements along with information about views and controls that are intuitive and scalable. For simplicity, these guidelines are presented herein as UI/UX checklists to verify key accessibility requirements are met in the design and implementation of the Platform.
+
+## Process and UI Framework
+
+Itential has built a set of guidelines to follow when creating user interfaces and designs for the Platform. These guidelines aim at targeting WCAG 2.1 conformance (as recommended by [W3C](https://www.w3.org/WAI/standards-guidelines/wcag/)).
+
+- Compliance with WCAG 2 is managed primarily through the RodeoUI library, which controls color, font properties, and other visual details.
+- Rodeo is built on [Prime React](https://primefaces.org/primereact/showcase/#/), which claims to be fully accessible and in compliance with Section 508 standards.
+- The Itential Style Guide, [Flavor](https://zeroheight.com/8d026cf29/p/38639d-flavor), provides an overview of all UI elements and guidelines for building interfaces with the RodeoUI library.
+- Specific app designs are based on the [Flavor](https://zeroheight.com/8d026cf29/p/38639d-flavor) style guide and [Prime React](https://primefaces.org/primereact/showcase/#/) component library.
+- Informal accessibility audits of live applications are performed pre-release by the Itential Testing & Verification team.
+
+## Visual Accessibility
+
+Accessibility begins with design. The following standards are met by all UI components and patterns in [Figma](https://www.figma.com/), a vector graphics editor and prototyping tool used at Itential to design and build the Itential Platform.
+
+- The AA (ideal) level of conformance is the standard for body text compared to background color. For contrast testing, [Color Review](https://color.review/) is used to test compliance.
+- Error, warning, and success states must use icons along with text and color. For colorblind and grayscale testing, the [Color Oracle](https://colororacle.org/index.html) simulator is used.
+- Text style properties (minimum requirements) are:
+	- Font size to at least 14px.
+	- Text enlargement not to exceed 200% (font magnification, not browser zoom).
+	- Line height (line spacing) to at least 1.5 times the font size.
+	- Paragraph spacing to at least 2 times the font size.
+	- Letter spacing to at least 0.12 times the font size.
+	- Word spacing to at least 0.16 times the font size.
+
+## Functional Accessibility
+
+Every functional test requirement references a WCAG 2.1 Success Criterion target.
+
+- A [project checklist](https://www.a11yproject.com/checklist/) is used to cover most of the [WCAG](https://www.w3.org/WAI/standards-guidelines/wcag/) requirements for accessibility and compliance.
+- Accessibility is tested across four major browsers: IE11, Edge, Chrome, and Firefox.
+- Where possible, built-in accessibility checkers are used to inspect a page. For example, in Chrome, select Audit → Accessibility → Generate Report.
+- If a page is rendered without CSS, it should still be in a logical order and navigable.
+
+## Keyboard Control (No Mouse)
+
+Itential users can use their keyboard like a mouse to navigate and interact with items onscreen.
+
+- If it can be clicked, selected, or modified (on input) it must be available from the keyboard (tabbing).
+- For drag and drop functionality, a keyboard-based cut and paste alternative can be offered, or a separate UI for accessibility can be enabled.
+- No keyboard traps. User must always be able to leave a component with the keyboard.
+- Tabbing must be in a logical top-down, left-right order. A tab-index is used to enforce a certain tabbing order, where needed.
+- If a button or link triggers a dialog or modal window, when the user closes the dialog, they should not be forced back to the top of the page. The element that had focus when the dialog was launched should regain focus when the dialog is closed.
+- Keyboard arrows do not trigger an event or function.
+- Elements with focus have clear visible focus indication.
+- When an element receives focus, no unexpected action is triggered.
+- Selecting or changing a checkbox, radio button, or toggle does not trigger unexpected changes in page context or content.
+
+The table below presents a list of keyboard shortcuts and best practices for assistive technologies and accessibility.
+
+| Press this | To do this |
+| :--- | :--- |
+| Enter | Click to action |
+| Spacebar | Toggle   Choose an item   Open a dropdown |
+| Tab | Navigate in a logical pattern |
+| Keyboard Arrows | Navigate inside a dropdown or container |
+
+## Screen Reader
+
+Screen reader is the interface that specifically works within browsers to read content aloud for blind and low vision individuals.
+
+- Gives ability for user to pause, stop, or hide moving, blinking, or auto-updating content.
+- Does not use color as a visual means to convey information - must use icon and text.
+- All Form elements have labels, and labels use the `<label-for>` html attribute to link a label to an input.
+- Offers a "skip to main content" button on UIs for screen readers to offer the user a chance to bypass headers and navigation elements that are repeated on every page.
+	- The `<label-for>` html attribute to link a label to an input can be hidden using CSS so it is only visible to the screen reader, but **Do Not Use** `visibility:hidden` or `display:none` to hide the link.
+- Each page has a title clearly describing the topic or purpose of that page.
+	- The `<title>` tag in a page header is compliant, and shows page topic in a Browser Tab.
+- Links and buttons that do not have clear text have a title attribute that conveys purpose or target.
+- All symbols and images have alternative text.
+	- All images have a descriptive `alt` attribute, or an empty string (`alt=""`) if it is a purely decorative image.
+- Page language is specified in HTML markup.
+- Validation uses clear and explicit language for input errors.
+- Required inputs use a proper attribute.
+- Sections have status roles using the `<role="">` attribute
+- ARIA is used, where appropriate, to better identify the purpose of UI elements.
+- Tables have header cells describing either the column that comes below it, or the row that comes after it. As a result, table cells are properly marked with a `“scope”` attribute so that the screen reader knows how to match the heading to the data.
+
+## React Specifications
+
+- In React, the `for` attribute is written as `htmlFor` in JSX.
+- Sometimes HTML semantics is broken when adding `<div>` elements to JSX to make React code work, especially when working with lists (`<ol>`, `<ul>` and `<dl>`) and the HTML `<table>`. In these cases, Itential will use [React Fragments](https://reactjs.org/docs/fragments.html) to group together multiple elements.
+
+For example:
+
+```javascript JavaScript icon="code"
+import React, { Fragment } from 'react';
+function ListItem({ item }) { return ( <Fragment><dt>{item.term}</dt> <dd>{item.description}</dd> </Fragment> );
+}
+function Glossary(props) { return ( <dl> {props.items.map(item => ( <ListItem item={item} key={item.id} />))} </dl>);
+}
+```
+
+| Component | Specification |
+| :--- | :--- |
+| NavSidebar | Main workspace area requires `role=“main”` |
+| Search | Requires `role=“search”` |
+
+## Design Examples
+
+The intent of this section is to show examples of the Itential Platform user interface.
+
+<Frame caption="Figure 1: Advanced Search and Collections View">
+![01-advanced-view](https://cdn.document360.io/608a5b1c-c031-48b8-8c28-fe71e0b4e64a/Images/Documentation/01-advanced-view.png?sv=2022-11-02&spr=https&st=2025-11-03T14%3A49%3A35Z&se=2025-11-03T15%3A05%3A35Z&sr=c&sp=r&sig=hZAonW%2FM6rBVTZw6MAfXZFu9dbCMNNqAoAnWUFExMd4%3D)
+</Frame>
+<br/>
+<Frame caption="Figure 2: Itential Platform Gen 2 Workflow">
+![02-gen2-workflow](https://cdn.document360.io/608a5b1c-c031-48b8-8c28-fe71e0b4e64a/Images/Documentation/02-gen2-workflow.png?sv=2022-11-02&spr=https&st=2025-11-03T14%3A49%3A35Z&se=2025-11-03T15%3A05%3A35Z&sr=c&sp=r&sig=hZAonW%2FM6rBVTZw6MAfXZFu9dbCMNNqAoAnWUFExMd4%3D)
+</Frame>
+
+## Accessibility at Itential
+
+The most important aspects of any user interface are navigation and consistent use of components to predict where things are on each page. Itential dedicates extra attention to these areas to inclusively improve the product experience for all types of users.
+
+We welcome your feedback on the accessibility of Itential Platform. Please let us know if you encounter accessibility limitations.
+
+- **Existing customers**, please use your support portal.
+
+	- [Itential Service Desk](https://itential.atlassian.net/servicedesk/customer/portal/14)
+
+- **Non-customers** and all other inquiries, please contact us via email or phone.
+
+	- Email: info@itential.com
+	- Phone: 1-800-404-5617
+
+We try to respond to feedback and reported issues within 5-7 business days.

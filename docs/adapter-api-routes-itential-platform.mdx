@@ -1,0 +1,63 @@
+---
+title: "Adapter API Routes"
+description: "Adapter API routes can be defined in the same manner as application routes. This allows you to expose adapter functionality using a web API instead of a task or custom code."
+---
+
+## Route Example
+
+Adding the `route` property to a method in the `pronghorn.json` file informs Itential Platform that you would like the route exposed.
+
+For example, let's say we have an adapter named `HelloWorld`. We can define a route for one of its methods with the following entry in the `pronghorn.json` file.
+
+```JSON JSON
+{
+    "name" : "hello",
+    "summary" : "Say hello",
+    "description" : "Example",
+    "input" : [],
+    "output" : {
+        "type" : "object",
+        "name" : "return_data",
+        "description" : "A string saying hello back to the user."
+    },
+    "route" : {
+        "verb" : "GET",
+        "path" : "/hello"
+    },
+    "roles" : ["admin"]
+}
+```
+
+This example tells Itential Platform that we would like to define the route `/hello` to serve as the interface for the method `hello` in our `HelloWorld` adapter.
+
+One important difference between applications and adapters when it comes to their API routes is that applications use the `title` property in the `pronghorn.json` file for their base path, whereas adapters use their `service name`. The `service name` is the name you gave the adapter when creating it. This name can be seen in the **Admin Essentials** application under the **Adapters** dropdown.
+
+<Frame>
+![AdaptersDropdown.png](https://cdn.document360.io/608a5b1c-c031-48b8-8c28-fe71e0b4e64a/Images/Documentation/AdaptersDropdown%281%29.png?sv=2022-11-02&spr=https&st=2025-11-03T13%3A38%3A54Z&se=2025-11-03T13%3A49%3A54Z&sr=c&sp=r&sig=Ui89ZTGCo%2F%2Fki%2FcfTVeefoccQJ7yhn2SmCZKoOXROk8%3D)
+</Frame>
+
+Let's take our `HelloWorld` adapter as an example. If we added it to Itential Platform with the name `HelloWorldAlpha`, then the `hello` method could be accessed via the following route:
+
+`http://<IAP base path>/HelloWorldAlpha/hello`
+
+If we added a second `HelloWorld` adapter named `HelloWorldBeta` then the hello method would have this route:
+
+`http://<IAP base path>/HelloWorldBeta/hello`
+
+## Reference
+
+You can see the routes that Itential Platform creates on the **Help Desk** page under `Adapter/Integration API`. Navigate to the icon on the left pane → select **Help** (right side) → click the **View Documentation** button under `Adapter/Integration API`.
+
+`http://<IAP base path>/help`
+
+<Frame>
+![AdapterIntegrationAPI.png](https://cdn.document360.io/608a5b1c-c031-48b8-8c28-fe71e0b4e64a/Images/Documentation/AdapterIntegrationAPI%281%29.png?sv=2022-11-02&spr=https&st=2025-11-03T13%3A38%3A54Z&se=2025-11-03T13%3A49%3A54Z&sr=c&sp=r&sig=Ui89ZTGCo%2F%2Fki%2FcfTVeefoccQJ7yhn2SmCZKoOXROk8%3D)
+</Frame>
+
+## Other Uses
+
+Exposed adapter routes can also be used in `JSON Forms` validation in the same manner as application routes. Just find your base URL and API route in the dropdowns.
+
+<Frame>
+![JsonFormsValidation.png](https://cdn.document360.io/608a5b1c-c031-48b8-8c28-fe71e0b4e64a/Images/Documentation/JsonFormsValidation%281%29.png?sv=2022-11-02&spr=https&st=2025-11-03T13%3A38%3A54Z&se=2025-11-03T13%3A49%3A54Z&sr=c&sp=r&sig=Ui89ZTGCo%2F%2Fki%2FcfTVeefoccQJ7yhn2SmCZKoOXROk8%3D)
+</Frame>

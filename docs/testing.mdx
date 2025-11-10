@@ -1,0 +1,54 @@
+---
+title: "Testing"
+description: "Itential strives to ensure everything is “built right” and the software operates as intended. Multiple automated tests are run prior to code merges alongside testing that is executed regularly on a daily and monthly basis."
+---
+
+
+This guide provides an overview of the types of testing that Itential performs, ranging from specific unit tests to overall system and integration testing. Additionally, it gives recommendations for users of the platform as a way of a reminder to ensure their deployments are stable and deployed without incident.
+
+## Test Coverage
+
+Test coverage for Itential Platform and IAG is executed via daily automated tests (over 4K tests within 50 repositories) as well as during the delivery of both maintenance and feature releases. This is accomplished using open-source industry standard tools.
+
+## Types of Testing
+
+Our product testing includes:
+
+- **Unit testing** by developers within their assigned teams. This is a combination of light automated testing and manual testing.
+- **HTTP API testing** (automated) using [Mocha](https://mochajs.org/) and [Chai](https://www.chaijs.com/) against a real Itential Platform server.
+- **User interface (UI)** and **end-to-end (E2E) component testing** (automated) using [Cypress](https://www.cypress.io/).
+- **Python testing** with [Pytest](https://docs.pytest.org/en/7.4.x/) for IAG and other Python components.
+
+## Test Releases
+
+There are two types of test releases at Itential: Maintenance and Feature.
+
+- **Maintenance** - This release is targeted to deliver fixes related to bugs and security the first Wednesday of each month. SDETs (Software Developers Engineer in Test) begin testing for this type of release within two weeks before delivery.
+- **Feature** - This release is targeted for delivery of the next version of Itential Platform and Itential Automation Gateway (IAG). The intent is to provide one to two Platform feature releases within a year. IAG is released more frequently and typically delivers three to four releases within the year. SDETs (Software Developers Engineer in Test) begin testing for this type of release within 30 to 40 days.
+
+## Test Recommendations
+
+Itential recommends the following test practices for any customized solution (i.e., workflows, JSTs, forms, etc) that utilizes IAP/IAG.
+
+- Have a dedicated staging lab where there are real instances of network devices and services, and always test in the staging lab first.
+- Do not just test workflows, but test all components.
+- Also test the JSON forms that are built because JSON forms can dynamically pull server-side data, which means full integration testing of JSON forms in a staging lab.
+
+## Automated Test Recommendations
+
+For automated testing, Itential customers should follow these key practices.
+
+- Use Cypress. There are equally valid alternatives; however, Cypress is the de facto recommendation since it is utilized by Itential for UI testing.
+- Use mock adapter data as prescribed by this Itential resource: [adapters/mock-data](https://www.itential.com/adapters-resources/mock-data/)
+- Use API testing on your workflows as follows:
+	- `startJob` to start workflows
+	- `getJobDetails` in a loop until there are manual tasks to work
+	- `completeJob` to proceed with the workflow
+	- Make assertions on the job exit status or the task output.
+- Use Cypress E2E testing to assert if other components (e.g., JSON Forms, Command Templates, etc) work.
+
+## Post-Upgrade Recommendations
+
+Itential customers should always test their software instance after every Platform or IAG upgrade. Although Itential runs test workflows through an automated test suite prior to each feature release or scheduled maintenance release, our workflows are invariably different than a customer's specific workflows. Itential also cannot fully scale its test environment to emulate every exact customer environment. Therefore, it is prudent to always test if specific components and solutions still work post-upgrade.
+
+Moreover, Itential highly recommends an in-depth review of [Release Notes](https://docs.itential.com/docs/monthly-maintenance-release-notes), [Deprecation Notices](https://docs.itential.com/v1/docs/product-notices-deprecations), and [Breaking Changes](https://docs.itential.com/docs/breaking-changes-5) for each release. Changes between release versions of the Itential software may require you to make changes to your application in order to avoid disruption to your system's implementation, and a critical analysis for any potential impact will best direct your testing efforts for any necessary modifications.

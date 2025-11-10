@@ -1,0 +1,66 @@
+---
+title: "Integration API Routes"
+description: "Itential Platform automatically creates integration API routes for all paths listed in an integration model. This allows you to use Itential Platform as a gateway for the routes defined in the OpenAPI (OAPI) document."
+---
+
+<Warning>
+This feature was removed in the 2023.2 release. Refer to the notification in the [Breaking Change](/docs/integration-api-routes-removed-breaking-change-2023-2).
+</Warning>
+
+## Route Example
+
+When Itential Platform creates a route for an integration it does so by using the name of the integration service and the `operationId` used in the OAPI document. Let's use a GitHub OAPI document as an example. Take the following path object in the OAPI document (response definitions removed for brevity).
+
+```json JSON expandable
+"/emojis": {
+      "get": {
+        "summary": "Emojis_GET",
+        "description": "Lists all the emojis available to use on GitHub.",
+        "operationId": "Emojis_GET",
+        "parameters": [
+          {
+            "name": "Accept",
+            "in": "header",
+            "description": "Is used to set specified media type.",
+            "style": "simple",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "deprecated": false
+      }
+    }
+```
+
+Itential Platform will create a route based on the integration name and the `operationId` used in the OAPI document. So, if we name our integration `MyGitHub` then IAP would create the following route for `/emojis`:
+
+`http://<IAP base path>/MyGitHub/Emojis_GET`
+
+## Reference
+
+You can see the routes created by Itential Platform on the **Help Desk** page under `Adapter/Integration API`.
+
+Navigate to the menu icon on the left. Select **Help** and then click the **View Documentation** button under `Adapter/Integration API`.
+
+`http://<IAP base path>/help`
+
+<Frame>
+![AdapterIntegrationAPI1](https://cdn.document360.io/608a5b1c-c031-48b8-8c28-fe71e0b4e64a/Images/Documentation/AdapterIntegrationAPI%281%29.png?sv=2022-11-02&spr=https&st=2025-11-03T13%3A51%3A32Z&se=2025-11-03T14%3A02%3A32Z&sr=c&sp=r&sig=Jli9d1RTgPP%2Fsojbxgzqq%2F%2BB0l5jbQTz%2BOjOUJZ%2B9GE%3D)
+</Frame>
+
+You can see detailed information about the OAPI document under the **Integration Models** section of **Admin Essentials**.
+
+<Frame>
+![IntegrationModels](https://cdn.document360.io/608a5b1c-c031-48b8-8c28-fe71e0b4e64a/Images/Documentation/IntegrationModels.png?sv=2022-11-02&spr=https&st=2025-11-03T13%3A51%3A32Z&se=2025-11-03T14%3A02%3A32Z&sr=c&sp=r&sig=Jli9d1RTgPP%2Fsojbxgzqq%2F%2BB0l5jbQTz%2BOjOUJZ%2B9GE%3D)
+</Frame>
+
+Click on the name of the integration model and Itential Platform will render all the information contained in the OAPI document in the right panel.
+
+## Other Uses
+
+Exposed adapter routes can also be used in `JSON Forms` validation in the same manner as application routes. Just find your base URL and API route in the dropdowns.
+
+<Frame>
+![JsonFormsValidation1](https://cdn.document360.io/608a5b1c-c031-48b8-8c28-fe71e0b4e64a/Images/Documentation/JsonFormsValidation%281%29.png?sv=2022-11-02&spr=https&st=2025-11-03T13%3A51%3A32Z&se=2025-11-03T14%3A02%3A32Z&sr=c&sp=r&sig=Jli9d1RTgPP%2Fsojbxgzqq%2F%2BB0l5jbQTz%2BOjOUJZ%2B9GE%3D)
+</Frame>

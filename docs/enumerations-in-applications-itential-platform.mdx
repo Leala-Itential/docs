@@ -1,0 +1,402 @@
+---
+title: "Enumerations in Applications"
+description: "This guide provides a general explanation of the **ENUM** feature, and shows the use of ENUM in the `pronghorn.json` file of Itential Platform."
+---
+
+## Terminology and Concepts
+
+Enum is a short abbreviation for "enumerations", which means "specifically listed". An enum specifies a list of constant values assigned to a type. A constant is an identifier (name) for a value that cannot change during the execution of a script/command.
+
+Essentially, enum is a special "class" that represents a group of constants. Once an enum is defined in configuration, you can constrain input to the set of values in the enumeration.
+
+## How and When to Use Enums to Define Workflow Tasks
+
+Enums are used to represent a fixed number of possible values. Hence, use enum if there is a definite number of fixed values for any one variable (similar to Boolean values with true or false).
+
+To create an **enum** input for a task.
+
+\* Use the **enum** keyword as type.
+\* Use **enum** when you have values that are not going to change, such as months, days of the week, colors, shirt sizes, etc.
+
+Create an **enumerals** array with all valid variations. In the example below, the **enumerals** array consists of the elements: sunday, monday, tuesday, wednesday, thursday, friday, and saturday.
+
+### Example
+
+The `WhatDay` task.
+
+```JSON JSON expandable
+"methods": [
+  {
+    "name": "WhatDay",
+    "description": "Day of the week picker.",
+    "summary": "Day of the week picker.",
+    "deprecated": false,
+    "roles": [
+      "admin"
+    ],
+    "input": [
+      {
+        "name": "theDay",
+        "type": "enum",
+        "enumerals": ["sunday", "monday", "tuesday", "wednesday", "thursday", "friday", "saturday"],
+        "description": "Pick a day of the week."
+      }
+    ],
+    "output": {
+      "name": "hoursDaylight",
+      "description": "The numerical value of how many hours of daylight the selected day has.",
+      "type": "string"
+    },
+    "task": true
+  }
+]
+```
+
+<Note>
+**Note:**
+
+You can create enumeration values that can be selected when filling a user input field. You can lock enum values to ensure that only the values you have created are selected for user input.
+</Note>
+
+## Enumeration in Workflow Builder
+
+Once a task is created:
+
+<Steps>
+<Step>
+Navigate to Workflow Builder.
+</Step>
+<Step>
+Add the task to the canvas, e.g., the `WhatDay` task example.
+
+<Frame caption="Figure 1: What Day Task">
+![whatDayWorkflowExample](https://cdn.document360.io/608a5b1c-c031-48b8-8c28-fe71e0b4e64a/Images/Documentation/whatDayWorkflowExample.png?sv=2022-11-02&spr=https&st=2025-11-03T13%3A48%3A38Z&se=2025-11-03T14%3A04%3A38Z&sr=c&sp=r&sig=81%2BfSWDln3LQieTc7y2B1cGIpDpL3tdEYvi4IeH2JJ4%3D)
+</Frame>
+</Step>
+<Step>
+Double-click to configure the task.
+</Step>
+<Step>
+Change the field type from `job` to `static`. Notice the pre-populated drop down list containing the days of the week.
+
+<Frame caption="Figure 2: What Day Task Dialog">
+![whatDayTaskDialog](https://cdn.document360.io/608a5b1c-c031-48b8-8c28-fe71e0b4e64a/Images/Documentation/whatDayTaskDialog.png?sv=2022-11-02&spr=https&st=2025-11-03T13%3A48%3A38Z&se=2025-11-03T14%3A04%3A38Z&sr=c&sp=r&sig=81%2BfSWDln3LQieTc7y2B1cGIpDpL3tdEYvi4IeH2JJ4%3D)
+</Frame>
+</Step>
+</Steps>
+## Itential Application Schema
+
+The following JSON schema can be used as reference for building valid `pronghorn.json` files. Specifically, the `enum` property.
+
+```json JSON expandable
+{
+  "$schema": "http://json-schema.org/draft-06/schema#",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Unique name of Pronghorn module. Most likely matches name in package.json.",
+      "pattern": "^(@[a-zA-Z0-9][-._a-zA-Z0-9]*/)?[a-zA-Z0-9][-._a-zA-Z0-9]*$"
+    },
+    "title": {
+      "type": "string",
+      "description": "Application's web API (REST or JSON RPC) namespace.",
+      "pattern": "^[a-zA-Z0-9][-_a-zA-Z0-9]*$"
+    },
+    "displayName": {
+      "type": "string",
+      "description": "Name displayed for application in Workflow Builder's application drop-down. Compensates for differences between property export and property title."
+    },
+    "export": {
+      "type": "string",
+      "description": "Application's JavaScript namespace. Must match value of module.export assignement.",
+      "pattern": "^[a-zA-Z0-9][-_a-zA-Z0-9]*$"
+    },
+    "type": {
+      "enum": [
+        "Application",
+        "Broker",
+        "Adapter"
+      ]
+    },
+    "summary": {
+      "type": "string",
+      "description": "A summary of functions this application provides."
+    },
+    "src": {
+      "type": "string",
+      "description": "File reference to package's main JavaScript module, relative to directory where pronghorn.json and package.json files are stored.",
+      "pattern": "^[a-zA-Z0-9][.-_a-zA-Z0-9]*.(js|bin)$"
+    },
+    "encrypted": {
+      "type": "boolean",
+      "description": "When true, Pronghorn expects an encrypted main JavaScript module with a .bin filename extension. Otherwise Pronghorn expects an unencrypted main JavaScript module with a .js filename extension."
+    },
+    "roles": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "string",
+        "description": "The allowed set of user roles the application's methods and views can specify.",
+        "pattern": "^[a-z-A-Z0-9][.-_a-z-A-Z0-9]*$"
+      }
+    },
+    "methods": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "description": "Object describing an application's method and its API.",
+        "properties": {
+          "name": {
+            "type": "string",
+            "description": "Method's name. Must match prototype function name defined in JavaScript source.",
+            "pattern": "^[a-z][a-zA-Z0-9]*$"
+          },
+          "display_name": {
+            "type": "string",
+            "description": "Text that will be displayed in a workflow task's properties dialog."
+          },
+          "deprecated": {
+            "type": "boolean",
+            "description": "If true, method is deprecated.",
+            "default": false
+          },
+          "summary": {
+            "type": "string",
+            "description": "A brief explanation of the method. Format as a title; capitalize all major words. Should not contain abbreviations or words that serve no purpose.",
+            "maxLength": 50
+          },
+          "description": {
+            "type": "string",
+            "description": "Explain the method's purpose: what does it do, what problem does it solve, and why was it created. Properly formatted as a paragraph. Capital the first letter of Pronghorn terminology, for example Job, Task, Catalog Store, etc. Avoid abbreviations, such as config; type configuration instead. Define acronyms before first use, such as Network Element Driver (NED)."
+          },
+          "input": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "description": "Object describing a parameter.",
+              "properties": {
+                "name": {
+                  "type": "string",
+                  "description": "Parameter's name. Must match parameter's name defined in JavaScript source.",
+                  "pattern": "^[a-zA-Z0-9][.-_a-zA-Z0-9]*$"
+                },
+                "type": {
+                  "enum": [
+                    "object",
+                    "array",
+                    "boolean",
+                    "number",
+                    "string",
+                    "enum",
+                    "*"
+                  ]
+                },
+                "enumerals": {
+                  "type": "array",
+                  "description": "Only used when type is enum.",
+                  "items": {
+                    "type": "string",
+                    "description": "An allowed value"
+                  }
+                },
+                "description": {
+                  "type": "string",
+                  "description": "Describe the parameter's purpose. If an object, include a JSON schema representation. If method can be called from a web API, is the parameter passed in the URL or a POST body?"
+                },
+                "info": {
+                  "type": "string",
+                  "description": "A tool tip. Include references to other APIs that return the parameter."
+                },
+                "required": {
+                  "type": "boolean",
+                  "description": "When true, parameter is mandatory.",
+                  "default": true
+                }
+              },
+              "required": [
+                "name",
+                "type",
+                "description"
+              ]
+            }
+          },
+          "output": {
+            "type": "object",
+            "description": "Describes the returned data.",
+            "properties": {
+              "name": {
+                "type": "string",
+                "description": "The outgoing variable name when method is called by a Workflow Job.",
+                "pattern": "^[a-z-A-Z0-9][.-_a-z-A-Z0-9]*$"
+              },
+              "type": {
+                "enum": [
+                  "object",
+                  "array",
+                  "boolean",
+                  "number",
+                  "string",
+                  "enum",
+                  "*"
+                ]
+              },
+              "enumerals": {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "description": "An allowed value"
+                }
+              },
+              "description": {
+                "type": "string",
+                "description": "Returned value's description."
+              }
+            },
+            "required": [
+              "name",
+              "type",
+              "description"
+            ]
+          },
+          "task": {
+            "type": "boolean",
+            "default": false,
+            "description": "When true, method can be called by a Workflow Job."
+          },
+          "route": {
+            "type": "object",
+            "description": "When defined, enables a web API for the method.",
+            "properties": {
+              "path": {
+                "type": "string",
+                "description": "Final part of URL appended after namespace.",
+                "pattern": "^(/[a-zA-Z0-9%][.-_a-zA-Z0-9%]*)+(/[:][.a-zA-Z0-9%][-_a-zA-Z0-9%]*)*$"
+              },
+              "verb": {
+                "enum": [
+                  "POST",
+                  "GET",
+                  "DELETE",
+                  "PUT"
+                ],
+                "description": "HTTP request type."
+              }
+            }
+          },
+          "roles": {
+            "type": "array",
+            "minItems": 1,
+            "items": {
+              "type": "string",
+              "description": "The allowed set of user roles for this method.",
+              "pattern": "^[a-z-A-Z0-9][.-_a-z-A-Z0-9]*$"
+            }
+          }
+        },
+        "required": [
+          "name",
+          "summary",
+          "description",
+          "input",
+          "output",
+          "roles"
+        ]
+      }
+    },
+    "views": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "description": "Object describing an application's views.",
+        "properties": {
+          "path": {
+            "type": "string",
+            "description": "Final part of URL appended after namespace.",
+            "pattern": "(^/$)|(^(/([-a-zA-Z0-9@:%._+~#=]{2,256}))+$)"
+          },
+          "deprecated": {
+            "type": "boolean",
+            "description": "If true, view is deprecated.",
+            "default": false
+          },
+          "title": {
+            "type": "string",
+            "description": "Application name when type view. Default task name if type task. Format as a title; capitalize all major words. Should not contain abbreviations or words that serve no purpose.",
+            "maxLength": 50
+          },
+          "template": {
+            "type": "string",
+            "description": "Relative file reference to the view's HTML file. Relative from the application's views directory. Can be an HTML or Jade file.",
+            "pattern": "^[a-zA-Z]([._-]|[a-zA-Z0-9])*(/[a-zA-Z]([._-]|[a-zA-Z0-9])*)*[.](jade|html)$"
+          },
+          "roles": {
+            "type": "array",
+            "minItems": 1,
+            "items": {
+              "type": "string",
+              "description": "The allowed set of user roles for this view.",
+              "pattern": "^[a-z-A-Z0-9][.-_a-z-A-Z0-9]*$"
+            }
+          },
+          "type": {
+            "enum": [
+              "task",
+              "view",
+              "dialog"
+            ],
+            "description": "Manual workflow tasks are type task. Applications are type view. Modal application views are type dialog."
+          },
+          "variables": {
+            "type": "object",
+            "description": "A skeleton object holding the view's parameters and return data.",
+            "properties": {
+              "incoming": {
+                "type": "object",
+                "description": "A skeleton object holding the view's parameters.",
+                "properties": {
+                  "^[a-zA-Z]": {
+                    "type": "null",
+                    "description": "A parameter's name as the key and a null value."
+                  }
+                }
+              },
+              "outgoing": {
+                "type": "object",
+                "description": "A skeleton object holding the view's returned data."
+              }
+            },
+            "required": [
+              "incoming",
+              "outgoing"
+            ]
+          }
+        },
+        "required": [
+          "path",
+          "template",
+          "roles",
+          "type"
+        ]
+      }
+    }
+  },
+  "required": [
+    "id",
+    "type",
+    "encrypted",
+    "roles"
+  ]
+}
+```
+
+## References
+
+To learn more about the use of enum in Node.js, see [enum on npm web site](https://www.npmjs.com/package/enum).
+
+To learn more about implementing enums using a JavaScript library, see [enumify on the npm web site](https://www.npmjs.com/package/enumify).
+
+To learn more about enumerated values in JSON schema, see the following.
+
+- JSON schema, generic keywords: [Enumerated values](https://json-schema.org/understanding-json-schema/reference/generic.html#enumerated-values)
+- JSON schema validation, [enum](https://json-schema.org/draft/2020-12/json-schema-validation)
