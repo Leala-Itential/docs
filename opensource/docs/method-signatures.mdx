@@ -1,0 +1,44 @@
+---
+title: "Method Signatures"
+description: "The API detailed for these calls should be available through JSDOC. The following is a brief summary of the calls."
+---
+
+## Generic Adapter Calls
+
+These are adapter methods that IAP or you might use. There are some other methods not shown here that might be used for internal adapter functionality.
+
+| Method Signature | Description | Workflow? |
+| :--- | :--- | :--- |
+| connect() | This call is run when the Adapter is first loaded by he Itential Platform. It validates the properties have been provided correctly. | No |
+| healthCheck(callback) | This call ensures that the adapter can communicate with Adapter for 128technology. The actual call that is used is defined in the adapter properties and .system entities action.json file. | No |
+| refreshProperties(properties) | This call provides the adapter the ability to accept property changes without having to restart the adapter. | No |
+| encryptProperty(property, technique, callback) | This call will take the provided property and technique, and return the property encrypted with the technique. This allows the property to be used in the adapterProps section for the credential password so that the password does not have to be in clear text. The adapter will decrypt the property as needed for communications with Adapter for 128technology. | No |
+| iapUpdateAdapterConfiguration(configFile, changes, entity, type, action, callback) | This call provides the ability to update the adapter configuration from IAP - includes actions, schema, mockdata and other configurations. | Yes |
+| iapFindAdapterPath(apiPath, callback) | This call provides the ability to see if a particular API path is supported by the adapter. | Yes |
+| iapSuspendAdapter(mode, callback) | This call provides the ability to suspend the adapter and either have requests rejected or put into a queue to be processed after the adapter is resumed. | Yes |
+| iapUnsuspendAdapter(callback) | This call provides the ability to resume a suspended adapter. Any requests in queue will be processed before new requests. | Yes |
+| iapGetAdapterQueue(callback) | This call will return the requests that are waiting in the queue if throttling is enabled. | Yes |
+| iapTroubleshootAdapter(props, persistFlag, adapter, callback) | This call can be used to check on the performance of the adapter - it checks connectivity, healthcheck and basic get calls. | Yes |
+| iapRunAdapterHealthcheck(adapter, callback) | This call will return the results of a healthcheck. | Yes |
+| iapRunAdapterConnectivity(callback) | This call will return the results of a connectivity check. | Yes |
+| iapRunAdapterBasicGet(callback) | This call will return the results of running basic get API calls. | Yes |
+| iapMoveAdapterEntitiesToDB(callback) | This call will push the adapter configuration from the entities directory into the Adapter or IAP Database. | Yes |
+| iapExpandedGenericAdapterRequest(metadata, uriPath, restMethod, pathVars, queryData, requestBody, addlHeaders, callback) | This is an expanded Generic Call. The metadata object allows us to provide many new capabilities within the generic request.  When using this call you need to know that the endpoint and input (e.g. body, query, etc) specific to the actions you are wanting to perform as different systems handle these things in different ways. | Yes |
+| genericAdapterRequest(uriPath, restMethod, queryData, requestBody, addlHeaders, callback) | This call allows you to provide the path to have the adapter call. It is an easy way to incorporate paths that have not been built into the adapter yet.  When using this call you need to know that the endpoint and input (e.g. body, query, etc) specific to the actions you are wanting to perform as different systems handle these things in different ways. | Yes |
+| genericAdapterRequestNoBasePath(uriPath, restMethod, queryData, requestBody, addlHeaders, callback) | This call is the same as the genericAdapterRequest only it does not add a base\_path or version to the call.  When using this call you need to know that the endpoint and input (e.g. body, query, etc) specific to the actions you are wanting to perform as different systems handle these things in different ways. | Yes |
+| iapHasAdapterEntity(entityType, entityId, callback) | This call verifies the adapter has the specific entity. | No |
+| iapVerifyAdapterCapability(entityType, actionType, entityId, callback) | This call verifies the adapter can perform the provided action on the specific entity. | No |
+| iapUpdateAdapterEntityCache() | This call will update the entity cache. | No |
+
+## Adapter Broker Calls
+
+These are adapter methods that are used to integrate to IAP Brokers.
+
+| Method Signature | Description | Workflow? |
+| :--- | :--- | :--- |
+| hasEntities(entityType, entityList, callback) | This call is utilized by the IAP Device Broker to determine if the adapter has a specific entity and item of the entity. | No |
+| getDevice(deviceName, callback) | This call returns the details of the requested device. | Yes |
+| getDevicesFiltered(options, callback) | This call returns the list of devices that match the criteria provided in the options filter. | Yes |
+| isAlive(deviceName, callback) | This call returns whether the device status is active | Yes |
+| getConfig(deviceName, format, callback) | This call returns the configuration for the selected device. | Yes |
+| iapGetDeviceCount(callback) | This call returns the count of devices. | Yes |

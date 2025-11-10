@@ -1,0 +1,43 @@
+---
+title: "IAP Update Configuration"
+---
+
+## Overview
+
+Updating an adapter using the `IPUpdateAdapterConfiguration` call allows users to update their adapter configuration from within IP rather than having to make changes in the file system of the adapter.
+
+The `IPUpdateAdapterConfiguration` call can be used to update connection settings, credentials, or other configuration parameters of an adapter from within IP. This includes updating crucial data such as the Endpoint Configuration (action.json, schema.json) and Mock Data. Additionally, we can update the package.json of the adapter.
+
+This is a generic method and has the capability to be performed in most Itential adapters.
+
+<Info>
+**Note:** There are issues with this call that affect certain Cloud customers. We are working to resolve this issue.
+</Info>
+
+## How to Run IP Update Configuration in Adapters
+
+The `IPUpdateAdapterConfiguration` is a task we can use in a workflow. Within the IP application, navigate to **Automation Studio** and then select **workflow builder**. Then, under the adapter you are trying to update, add the `IPUpdateAdapterConfiguration` task.
+
+The example below demonstrates using the call to update a mock data file in an adapter.
+
+<Frame caption="Figure 1: SwaggerPetstore IPUpdateAdapterConfiguration Task">
+![IP_Update_Configuration](https://cdn.document360.io/608a5b1c-c031-48b8-8c28-fe71e0b4e64a/Images/Documentation/IP_Update_Configuration.png?sv=2022-11-02&spr=https&st=2025-11-03T14%3A31%3A48Z&se=2025-11-03T14%3A42%3A48Z&sr=c&sp=r&sig=%2BPEMZaJZnPK25N9J0LLfOswqghNDCfLYEbkxGKT4k2o%3D)
+</Frame>
+
+
+*Figure 2. Input Definitions*
+
+| Input | Description |
+| --- | --- |
+| configFile | the name of the file being updated (required) |
+| changes | an object containing all of the changes = formatted like the configuration file (required) |
+| Entity | the entity to be changed, if an action, schema or mock data file (optional) |
+| type | the type of entity file to change, (action, schema, mock) (optional) |
+| action | the action to be changed, if an action, or mock data file (optional) |
+| callback | the results of the call |
+
+An action is the task / call that has mock data that is being updated. The inputs to the task are what is needed to identify what file you want to change and what those changes will be.
+
+In *Figure 1*, the `IPUpdateAdapterConfiguration` task would run an update in the **mock data** file that is specified in the first variable (`configFile`) - with the data placed in `changes`. Because we selected **true** for the `replace` variable, the previous mock data is updated with the desired changes. Otherwise, the data would be combined with the existing file. The `replace` variable is only used when the type is **mock**.
+
+The result leaves you with the desired changes in the adapter without having to make changes in the file system.

@@ -1,68 +1,106 @@
 {
   "$schema": "https://mintlify.com/docs.json",
   "theme": "mint",
-  "name": "Mint Starter Kit",
+  "name": "Itential",
   "colors": {
-    "primary": "#16A34A",
-    "light": "#07C983",
-    "dark": "#15803D"
+    "primary": "#1b93d2",
+    "light": "#fe0094",
+    "dark": "#fe0094"
   },
-  "favicon": "/favicon.svg",
+  "favicon": "/favicon.png",
+  "appearance": {
+    "default": "dark"
+  },
+  "background": {
+    "color": {
+      "dark": "#060a2f"
+    }
+  },
+  "fonts": {
+    "heading": {
+      "family": "Roboto"
+    },
+    "body": {
+      "family": "Open Sans"
+    }
+  },
   "navigation": {
-    "tabs": [
+    "versions": [
       {
-        "tab": "Guides",
-        "groups": [
+        "version": "Itential Platform",
+        "icon": "book",
+        "tabs": [
           {
-            "group": "Getting started",
+            "tab": "Home",
+            "icon": "house",
             "pages": [
-              "index",
-              "quickstart",
-              "development"
+              "index"
             ]
           },
           {
-            "group": "Customization",
-            "pages": [
-              "essentials/settings",
-              "essentials/navigation"
+            "tab": "Documentation",
+            "icon": "book-open-lines",
+            "groups": [
+              {
+                "group": "Itential Resources",
+                "pages": [
+                  "docs/itential-resources",
+                  "docs/itential-product-documentation-new-faq",
+                  "docs/itential-dependencies-consolidated",
+                  "docs/isd-support-tickets-frequently-asked-questions",
+                  "docs/accessibility-iap",
+                  "docs/testing"
+                ]
+              },
+              {
+                "group": "Itential Developers (DevGuides)",
+                "pages": [
+                  "docs/adapter-api-routes-itential-platform",
+                  "docs/adapter-degraded-status-itentil-platform",
+                  "docs/broker-principal-config-setting-dev-2023-2",
+                  "docs/enumerations-in-applications-itential-platform",
+                  "docs/integration-api-routes"
+                ]
+              }
             ]
           },
           {
-            "group": "Writing content",
-            "pages": [
-              "essentials/markdown",
-              "essentials/code",
-              "essentials/images",
-              "essentials/reusable-snippets"
-            ]
-          },
-          {
-            "group": "AI tools",
-            "pages": [
-              "ai-tools/cursor",
-              "ai-tools/claude-code",
-              "ai-tools/windsurf"
-            ]
+            "tab": "API Reference",
+            "icon": "code",
+            "openapi": "openapi.json"
           }
         ]
       },
       {
-        "tab": "API reference",
-        "groups": [
+        "version": "Itential Opensource",
+        "icon": "book",
+        "tabs": [
           {
-            "group": "API documentation",
+            "tab": "Home",
+            "icon": "house",
             "pages": [
-              "api-reference/introduction"
+              "opensource"
             ]
           },
           {
-            "group": "Endpoint examples",
-            "pages": [
-              "api-reference/endpoint/get",
-              "api-reference/endpoint/create",
-              "api-reference/endpoint/delete",
-              "api-reference/endpoint/webhook"
+            "tab": "Documentation",
+            "icon": "book-open-lines",
+            "groups": [
+              {
+                "group": "Adapters",
+                "pages": [
+                  "opensource/docs",
+                  "opensource/docs/using-adapters-api-in-json-form-dropdowns",
+                  {
+                    "group": "Adapter Generic Methods",
+                    "pages": [
+                      "opensource/docs/adapter-generic-methods",
+                      "opensource/docs/method-signatures",
+                      "opensource/docs/iap-update-configuration"
+                    ]
+                  }
+                ]
+              }
             ]
           }
         ]
@@ -71,13 +109,18 @@
     "global": {
       "anchors": [
         {
-          "anchor": "Documentation",
-          "href": "https://mintlify.com/docs",
-          "icon": "book-open-cover"
+          "anchor": "About Us",
+          "href": "https://www.itential.com/company/about-us/",
+          "icon": "users"
+        },
+        {
+          "anchor": "FAQs",
+          "href": "https://www.itential.com/faq/",
+          "icon": "circle-question"
         },
         {
           "anchor": "Blog",
-          "href": "https://mintlify.com/blog",
+          "href": "https://www.itential.com/blog/",
           "icon": "newspaper"
         }
       ]
@@ -85,19 +128,24 @@
   },
   "logo": {
     "light": "/logo/light.svg",
-    "dark": "/logo/dark.svg"
+    "dark": "/logo/dark.svg",
+    "href": "https://www.itential.com/"
   },
   "navbar": {
     "links": [
       {
+        "label": "Login",
+        "href": "https://hub.itential.io/login"
+      },
+      {
         "label": "Support",
-        "href": "mailto:hi@mintlify.com"
+        "href": "https://itential.atlassian.net/servicedesk/customer/portals"
       }
     ],
     "primary": {
       "type": "button",
-      "label": "Dashboard",
-      "href": "https://dashboard.mintlify.com"
+      "label": "Request a Demo",
+      "href": "https://www.itential.com/contact-us/"
     }
   },
   "contextual": {
@@ -114,9 +162,12 @@
   },
   "footer": {
     "socials": {
-      "x": "https://x.com/mintlify",
-      "github": "https://github.com/mintlify",
-      "linkedin": "https://linkedin.com/company/mintlify"
+      "facebook": "https://www.facebook.com/Itential/",
+      "x": "http://twitter.com/Itential",
+      "instagram": "https://www.instagram.com/itential/https://www.instagram.com/itential/",
+      "linkedin": "https://www.linkedin.com/company/itential/",
+      "youtube": "https://www.youtube.com/channel/UCo8Uh94DsDWWL9kZ7QhZ1ig",
+      "github": "https://github.com/itential"
     }
   }
 }

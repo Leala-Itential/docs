@@ -1,0 +1,20 @@
+/* Navigation button hover styles */
+
+/* Light mode hover */
+#docs-button:hover,
+#api-button:hover,
+#opensource-button:hover {
+  border-color: #1b93d2;
+  background-color: white;
+  color: #1b93d2;
+}
+
+/* Dark mode hover */
+.dark #docs-button:hover,
+.dark #api-button:hover,
+.dark #opensource-button:hover {
+  border-color: #fe0094 !important;
+  background-color: rgb(229, 231, 235);
+  color: #fe0094;
+}
+

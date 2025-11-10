@@ -1,0 +1,86 @@
+---
+title: "Using Adapters API in JSON Form Dropdowns"
+---
+
+## Using the Form Element Dynamic Dropdown
+
+JSON Forms in Itential Automation Platform (IAP) can seamlessly integrate with APIs or adapters to fetch, manipulate, and display data. This guide provides step-by-step instructions on working with adapter calls in JSON Forms, along with key considerations to ensure successful integration.
+
+## Configure the Adapter Call Within the Form
+
+- Drag the Dropdown element over to the empty box on the canvas.
+
+<Frame>
+![f08fdeba-b4b2-4a83-bde1-592e088e7ec0.png](https://cdn.document360.io/608a5b1c-c031-48b8-8c28-fe71e0b4e64a/Images/Documentation/f08fdeba-b4b2-4a83-bde1-592e088e7ec0.png?sv=2022-11-02&spr=https&st=2025-11-03T14%3A50%3A51Z&se=2025-11-03T15%3A02%3A51Z&sr=c&sp=r&sig=sort8alc4AxUuB10simSs5pP7w%2BWuuDrzd1a4x0ndqU%3D)
+</Frame>
+
+- Hover over the three dots in the upper-right corner. Click the gear icon when it appears to edit the Dropdown. The Configure dialog displays.
+
+<Frame>
+![4f273954-a51a-47d8-81ff-2835167b4d22.png](https://cdn.document360.io/608a5b1c-c031-48b8-8c28-fe71e0b4e64a/Images/Documentation/4f273954-a51a-47d8-81ff-2835167b4d22.png?sv=2022-11-02&spr=https&st=2025-11-03T14%3A50%3A51Z&se=2025-11-03T15%3A02%3A51Z&sr=c&sp=r&sig=sort8alc4AxUuB10simSs5pP7w%2BWuuDrzd1a4x0ndqU%3D)
+</Frame>
+
+- Select the Dynamic option.
+
+<Frame>
+![ebb7a2c6-6179-4899-93b5-b35e92c50eca.png](https://cdn.document360.io/608a5b1c-c031-48b8-8c28-fe71e0b4e64a/Images/Documentation/ebb7a2c6-6179-4899-93b5-b35e92c50eca.png?sv=2022-11-02&spr=https&st=2025-11-03T14%3A50%3A51Z&se=2025-11-03T15%3A02%3A51Z&sr=c&sp=r&sig=sort8alc4AxUuB10simSs5pP7w%2BWuuDrzd1a4x0ndqU%3D)
+</Frame>
+
+- Identify the adapter you need for the integration.
+	- Ensure the adapter is already installed and up in your IAP instance.
+- Make Request Configuration selections for the following fields:
+	- Method
+	- Base URL
+	- API Route
+	- Request Body
+
+<Frame>
+![a5f2eb46-5581-4195-8f78-6c36cc449462.png](https://cdn.document360.io/608a5b1c-c031-48b8-8c28-fe71e0b4e64a/Images/Documentation/a5f2eb46-5581-4195-8f78-6c36cc449462.png?sv=2022-11-02&spr=https&st=2025-11-03T14%3A50%3A51Z&se=2025-11-03T15%3A02%3A51Z&sr=c&sp=r&sig=sort8alc4AxUuB10simSs5pP7w%2BWuuDrzd1a4x0ndqU%3D)
+</Frame>
+
+- Configure the Method for the call:
+	- POST: Use POST if the adapter task requires input.
+	- GET: Use GET if the adapter task does not accept any input parameters.
+		- Confirm from the adapter's documentation if no input is required.
+	- While the JSON Form sends a POST request to the adapter, the adapter itself can execute different HTTP methods (e.g., GET, PUT) as required by the external API.
+- Identify the adapter you need for the integration as the Base URL
+	- Ensure the adapter is already installed and online in your IAP instance.
+- Select the API Route
+	- Which follows this structure /\{adapterTask-name}
+		- API routes for adapter calls are defined in the pronghorn.json file of the adapter.
+- Define the required payload for the adapter call in the JSON Form configuration under Request Body.
+	- This payload must match the JSON input expected by the adapter task, not the external system. The adapter handles translating this payload into the format required by the external API.
+	- Ensure the Request Body includes all fields expected by the adapter task, even optional ones. If certain optional fields are not needed, you can leave them empty.
+	- For instance, if the adapter task expects three inputs—id, name, and body, with id being the only required field—the Request Body for JSON Form would look like:
+
+```json plain text
+{
+"id": "123",
+"name": "",
+"body": {}
+}
+```
+
+- Click the Make API Call button.
+- The output of the API call will appear in the Response Body.
+
+For other JSON Form capabilities such as response filtering follow [Using the Form Element Dropdown](https://docs.itential.com/docs/using-the-form-element-dropdown-4#configuring-dropdown-form-elements)
+
+### Key Considerations
+
+#### API Route:
+
+The Base URL points to the adapter task endpoint within IAP, not the external system. Example: /adapter-task
+
+#### HTTP Method:
+
+- Use POST for tasks requiring input.
+- Use GET only when the adapter task has no input requirements.
+
+#### Request Body:
+
+The body sent to the adapter must match the format expected by the adapter task, not the external system. The adapter translates the input into the appropriate format for the external API.
+
+#### Permissions
+
+When the JSON Form is run, the user populating data into the Form must have permissions to execute the adapter call. This usually means they will require admin permissions on the adapter.

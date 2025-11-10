@@ -1,97 +1,127 @@
 ---
-title: "Introduction"
-description: "Welcome to the new home for your documentation"
+mode: "custom"
+title: "Itential Documentation"
 ---
 
-## Setting up
+<div className="relative w-full flex items-center justify-center" style={{ height: '24rem', overflow: 'hidden'}}>
 
-Get your documentation site up and running in minutes.
+<div id="background-div" className="absolute inset-0 h-full bg-[#00000000] bg-cover bg-center"></div>
 
-<Card
-  title="Start here"
-  icon="rocket"
-  href="/quickstart"
-  horizontal
+
+<div style={{ position: 'absolute', textAlign: 'center', padding: '0 1rem' }}>
+  <div
+    className="text-5xl font-bold w-full mt-12 text-black dark:text-white"
+  >
+    Itential Documentation & Guides
+  </div>
+
+    <p className="text-lg text-black dark:text-white" style={{  fontWeight: '500' , maxWidth: '40rem', margin: '0 auto', marginTop: '0.5rem'}}>
+      Comprehensive documentation to help you get the most out of Itential software.
+    </p>
+
+    <div className="flex justify-center gap-6 mt-8 mb-6">
+        <a
+          id="docs-button"
+          href="/docs/itential-product-documentation-new-faq"
+          className="px-8 py-3 border border-black dark:border-gray-300 text-black dark:text-white font-medium rounded-md transition-all duration-200"
+          style={{
+          background: 'transparent',
+          minWidth: '180px',
+          textAlign: 'center',
+          fontSize: '1rem',
+          letterSpacing: '0.01em'
+        }}
+      >
+        DOCUMENTATION
+      </a>
+      <a
+        id="api-button"
+        href="https://apidocs.itential.com/"
+          className="px-8 py-3 border border-black dark:border-gray-300 text-black dark:text-white font-medium rounded-md transition-all duration-200"
+        style={{
+          background: 'transparent',
+          minWidth: '180px',
+          textAlign: 'center',
+          fontSize: '1rem',
+          letterSpacing: '0.01em'
+        }}
+      >
+        API REFERENCE
+      </a>
+      <a
+        id="opensource-button"
+        href="/opensource"
+          className="px-8 py-3 border border-black dark:border-gray-300 text-black dark:text-white font-medium rounded-md transition-all duration-200"
+        style={{
+          background: 'transparent',
+          minWidth: '180px',
+          textAlign: 'center',
+          fontSize: '1rem',
+          letterSpacing: '0.01em'
+        }}
+      >
+        OPENSOURCE
+      </a>
+    </div>
+
+    <div className="flex items-center justify-center" style={{ maxWidth: '800px', margin: '0 auto' }}>
+      <button
+        type="button"
+        className="hidden w-full lg:flex items-center text-sm leading-6 py-4 pl-4 pr-4 text-gray-500 rounded-full"
+        id="home-search-entry"
+        style={{
+          marginTop: '2rem',
+          maxWidth: '40rem',
+          background: '#FFF',
+          boxShadow: '0px 1px 4px 0px rgba(8, 9, 10, 0.25), 0px 0px 0px 4px rgba(255, 255, 255, 0.20)',
+          cursor: 'pointer',
+          textAlign: 'left',
+        }}
+        onClick={()=> document.getElementById('search-bar-entry').click()}
+      >
+        <svg
+          className="h-4 w-4 ml-1.5 flex-none bg-primary hover:bg-gray-600 dark:bg-primary-dark dark:hover:bg-white/70"
+          style={{
+          marginRight: '0.5rem',
+          maskImage:
+            'url("https://mintlify.b-cdn.net/v6.5.1/solid/magnifying-glass.svg")',
+          maskRepeat: 'no-repeat',
+          maskPosition: 'center center',
+          }}
+        />
+        Search or ask...
+      </button>
+    </div>
+  </div>
+</div>
+
+<div
+  style={{marginTop: '2rem', marginBottom: '8rem', maxWidth: '70rem', marginLeft: 'auto',
+  marginRight: 'auto', paddingLeft: '1.25rem',
+  paddingRight: '1.25rem' }}
 >
-  Follow our three step quickstart guide.
-</Card>
 
-## Make it yours
-
-Design a docs site that looks great and empowers your users.
-
-<Columns cols={2}>
-  <Card
-    title="Edit locally"
-    icon="pen-to-square"
-    href="/development"
-  >
-    Edit your docs locally and preview them in real time.
+<CardGroup cols={3}>
+  <Card title="Most Viewed Articles" icon="eye">
+    <a href="/docs/itential-product-documentation-new-faq" className="flex items-center gap-2 block hover:underline mt-2 mb-1"><Icon icon="check" /> What's New & FAQs</a>
+    <a href="https://docs.itential.com/docs/python-virtual-environment-venv-iag-2023-3" className="flex items-center gap-2 block hover:underline mb-1"><Icon icon="check" /> Python Virtual Environment (VENV)</a>
+    <a href="https://docs.itential.com/docs/configure-hashicorp-vault-itential-platform" className="flex items-center gap-2 block hover:underline mb-1"><Icon icon="check" /> Configuring HashiCorp Vault</a>
+    <a href="/docs/itential-resources" className="flex items-center gap-2 block hover:underline mb-1"><Icon icon="check" /> Itential Resources</a>
+    <a href="/docs/itential-dependencies-consolidated" className="flex items-center gap-2 block hover:underline mb-1"><Icon icon="check" /> Itential Dependencies</a>
   </Card>
-  <Card
-    title="Customize your site"
-    icon="palette"
-    href="/essentials/settings"
-  >
-    Customize the design and colors of your site to match your brand.
+  <Card title="Recently Created Articles" icon="clock">
+    <a href="https://docs.itential.com/docs/iag-key-features-integrations" className="flex items-center gap-2 block hover:underline mt-2 mb-1"><Icon icon="check" /> Itential Automation Gateway</a>
+    <a href="https://docs.itential.com/docs/security-dependencies-itential-platform" className="flex items-center gap-2 block hover:underline mb-1"><Icon icon="check" /> Security Dependencies</a>
+    <a href="https://docs.itential.com/docs/kubernetes" className="flex items-center gap-2 block hover:underline mb-1"><Icon icon="check" /> Kubernetes</a>
+    <a href="https://docs.itential.com/docs/events-job-sla-itential-platform" className="flex items-center gap-2 block hover:underline mb-1"><Icon icon="check" /> Events</a>
+    <a href="https://docs.itential.com/docs/installing-dependencies-overview-itential-platform" className="flex items-center gap-2 block hover:underline mb-1"><Icon icon="check" /> Prerequisite Overview</a>
   </Card>
-    <Card
-    title="Set up navigation"
-    icon="map"
-    href="/essentials/navigation"
-  >
-    Organize your docs to help users find what they need and succeed with your product.
+  <Card title="Recently Modified Articles" icon="pencil">
+    <a href="https://docs.itential.com/docs/iag-key-features-integrations" className="flex items-center gap-2 block hover:underline mt-2 mb-1"><Icon icon="check" /> Itential Automation Gateway</a>
+    <a href="https://docs.itential.com/docs/about-itential-platform-6-feature-release" className="flex items-center gap-2 block hover:underline mb-1"><Icon icon="check" /> Platform 6</a>
+    <a href="https://docs.itential.com/docs/itential-platform-properties-environment-variables" className="flex items-center gap-2 block hover:underline mb-1"><Icon icon="check" /> Platform Environment Variables</a>
+    <a href="https://docs.itential.com/docs/platform-6-configuration-enhancements" className="flex items-center gap-2 block hover:underline mb-1"><Icon icon="check" /> Configuration Enhancements</a>
+    <a href="https://docs.itential.com/docs/evaluation-task-itential-platform-1" className="flex items-center gap-2 block hover:underline mb-1"><Icon icon="check" /> Evaluation</a>
   </Card>
-  <Card
-    title="API documentation"
-    icon="terminal"
-    href="/api-reference/introduction"
-  >
-    Auto-generate API documentation from OpenAPI specifications.
-  </Card>
-</Columns>
-
-## Create beautiful pages
-
-Everything you need to create world-class documentation.
-
-<Columns cols={2}>
-  <Card
-    title="Write with MDX"
-    icon="pen-fancy"
-    href="/essentials/markdown"
-  >
-    Use MDX to style your docs pages.
-  </Card>
-  <Card
-    title="Code samples"
-    icon="code"
-    href="/essentials/code"
-  >
-    Add sample code to demonstrate how to use your product.
-  </Card>
-  <Card
-    title="Images"
-    icon="image"
-    href="/essentials/images"
-  >
-    Display images and other media.
-  </Card>
-  <Card
-    title="Reusable snippets"
-    icon="recycle"
-    href="/essentials/reusable-snippets"
-  >
-    Write once and reuse across your docs.
-  </Card>
-</Columns>
-
-## Need inspiration?
-
-<Card
-  title="See complete examples"
-  icon="stars"
-  href="https://mintlify.com/customers"
->
-  Browse our showcase of exceptional documentation sites.
-</Card>
+</CardGroup>
+</div>

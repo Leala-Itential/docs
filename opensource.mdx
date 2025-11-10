@@ -1,0 +1,108 @@
+---
+mode: "custom"
+title: "Itential Documentation"
+---
+
+<div className="relative w-full flex items-center justify-center" style={{ height: '32rem', overflow: 'hidden'}}>
+
+<div id="background-div" className="absolute inset-0 h-full bg-[#00000000] bg-cover bg-center"></div>
+
+
+<div style={{ position: 'absolute', textAlign: 'center', padding: '0 1rem' }}>
+  <div
+    className="text-5xl font-bold w-full mt-12 text-black dark:text-white"
+  >
+    Itential Opensource
+  </div>
+
+    <p className="text-lg text-black dark:text-white" style={{  fontWeight: '500' , maxWidth: '50rem', margin: '0 auto', marginTop: '0.5rem'}}>
+      Documentation for all of the Itential Opensource efforts - Adapters, Prebuilts and Tools. This documentation should help you make use of these items to expedite your ability to automate. Much of the Documentation is contained here in Document 360, however some of the documents provide links to outside documentation in other places like GitLab. The documentation is useful to help you find, install, configure, use and troubleshoot.
+    </p>
+
+    <div className="flex justify-center gap-6 mt-8 mb-6">
+        <a
+          href="/"
+          className="px-8 py-3 border border-black hover:border-primary dark:hover:border-primary hover:border-primary dark:border-primary text-black dark:text-white font-medium rounded-md transition-all duration-200 hover:bg-white hover:text-primary dark:border-gray-300 dark:text-gray-100 dark:hover:bg-gray-200 dark:hover:text-primary"
+          style={{
+          background: 'transparent',
+          minWidth: '180px',
+          textAlign: 'center',
+          fontSize: '1rem',
+          letterSpacing: '0.01em'
+        }}
+      >
+        DOCUMENTATION
+      </a>
+      <a
+        href="/index"
+          className="px-8 py-3 border border-black hover:border-primary dark:hover:border-primary hover:border-primary dark:border-primary text-black dark:text-white font-medium rounded-md transition-all duration-200 hover:bg-white hover:text-primary dark:border-gray-300 dark:text-gray-100 dark:hover:bg-gray-200 dark:hover:text-primary"
+        style={{
+          background: 'transparent',
+          minWidth: '180px',
+          textAlign: 'center',
+          fontSize: '1rem',
+          letterSpacing: '0.01em'
+        }}
+      >
+        PRODUCT DOCS
+      </a>
+    </div>
+
+    <div className="flex items-center justify-center" style={{ maxWidth: '800px', margin: '0 auto' }}>
+      <button
+        type="button"
+        className="hidden w-full lg:flex items-center text-sm leading-6 py-4 pl-4 pr-4 text-gray-500 rounded-full"
+        id="home-search-entry"
+        style={{
+          marginTop: '2rem',
+          maxWidth: '40rem',
+          background: '#FFF',
+          boxShadow: '0px 1px 4px 0px rgba(8, 9, 10, 0.25), 0px 0px 0px 4px rgba(255, 255, 255, 0.20)',
+          cursor: 'pointer',
+          textAlign: 'left',
+        }}
+        onClick={()=> document.getElementById('search-bar-entry').click()}
+      >
+        <svg
+          className="h-4 w-4 ml-1.5 flex-none bg-primary hover:bg-gray-600 dark:bg-primary-dark dark:hover:bg-white/70"
+          style={{
+          marginRight: '0.5rem',
+          maskImage:
+            'url("https://mintlify.b-cdn.net/v6.5.1/solid/magnifying-glass.svg")',
+          maskRepeat: 'no-repeat',
+          maskPosition: 'center center',
+          }}
+        />
+        Search or ask...
+      </button>
+    </div>
+  </div>
+</div>
+
+<div
+  style={{marginTop: '2rem', marginBottom: '8rem', maxWidth: '70rem', marginLeft: 'auto',
+  marginRight: 'auto', paddingLeft: '1.25rem',
+  paddingRight: '1.25rem' }}
+>
+
+<CardGroup cols={3}>
+  <Card title="Most Viewed Articles" icon="eye">
+    <a href="https://docs.itential.com/opensource/docs/depth-zero-self-signed-cert" className="flex items-center gap-2 block hover:underline"><Icon icon="check" /> DEPTH\_ZERO\_SELF\_SIGNED\_CERT</a>
+    <a href="https://docs.itential.com/opensource/docs/static-token" className="flex items-center gap-2 block hover:underline"><Icon icon="check" /> Static Token</a>
+    <a href="https://docs.itential.com/opensource/docs/itential-technical-resources" className="flex items-center gap-2 block hover:underline"><Icon icon="check" /> Itential Technical Resources</a>
+    <a href="https://docs.itential.com/opensource/docs/oauth-authentication" className="flex items-center gap-2 block hover:underline"><Icon icon="check" /> OAuth Authentication</a>
+    <a href="https://docs.itential.com/opensource/docs/schema-field-definitions" className="flex items-center gap-2 block hover:underline"><Icon icon="check" /> Schema Field Definitions</a>
+  </Card>
+  <Card title="Most Liked Articles" icon="heart">
+    NO data found
+  </Card>
+  <Card title="Recently Modified Articles" icon="pencil">
+
+<a href="https://docs.itential.com/opensource/docs/dynamic-data-using-itential-platform-metadata" className="flex items-center gap-2 block hover:underline"><Icon icon="check" /> Dynamic Data Using Adapter iapMetadata</a>
+<a href="https://docs.itential.com/opensource/docs/changing-adapter-properties-prior-to-making-a-call-itential-platform" className="flex items-center gap-2 block hover:underline"><Icon icon="check" /> Changing Adapter Properties</a>
+<a href="https://docs.itential.com/opensource/docs/adding-query-paramters-to-api-call-made-by-adapter-itential-platform" className="flex items-center gap-2 block hover:underline"><Icon icon="check" /> Adding Query Parameters</a>
+<a href="https://docs.itential.com/opensource/docs/adding-dynamic-headers-to-api-call-made-by-adapter-itential-platform" className="flex items-center gap-2 block hover:underline"><Icon icon="check" /> Adding Dynamic Headers</a>
+<a href="https://docs.itential.com/opensource/docs/configuration" className="flex items-center gap-2 block hover:underline"><Icon icon="check" /> Configuration</a>
+  </Card>
+</CardGroup>
+</div>
