@@ -6,6 +6,14 @@ title: "Adapter Degraded Status"
 
 The `degraded` status is an additional adapter state alongside the `online` (connected) and `offline` (disconnected) status. This unique state would be used for adapter-nso and other adapters that have multiple connection types.
 
+<Expandable title="Content">
+  
+</Expandable>
+
+<Accordion title="New Accordion" icon="sparkles">
+  
+</Accordion>
+
 Some scenarios where the degraded state would apply include:
 
 - The connection is not fully up or fully down.
@@ -13,11 +21,17 @@ Some scenarios where the degraded state would apply include:
 - The adapter is connected, but it is an unstable connection.
 - Some functions related to a mode of communication fail to respond.
 
+| <Tooltip tip="sdfsaef">sgzsdg</Tooltip> | `kjhkj` | | | | |
+| --------------------------------------- | ------- | --- | --- | --- | --- |
+|                                         |         | | | | |
+|                                         |         | | | | |
+|                                         |         | | | | |
+
 ## Emit Degraded Events
 
 Add the example code block to instances where you would like to send the adapter to the degraded state.
 
-```javascript JavaScript icon="code"
+```javascript JavaScript icon=code
 this.emit("DEGRADED", {
     reason: 'Reason adapter is degraded (will appear on system page'
 });
@@ -25,7 +39,7 @@ this.emit("DEGRADED", {
 
 Add this example code block to instances where the adapter is no longer degraded, and the state should be removed. For example, if the second method of communication comes back online, the connection stabilizes, or a specific call succeeds.
 
-```javascript JavaScript icon="code"
+```javascript JavaScript icon=code
 this.emit("FIXED", {
     reason: 'Optional'
 });
@@ -36,54 +50,56 @@ this.emit("FIXED", {
 To recognize a `degraded` state:
 
 <Steps>
-<Step>
-  Start Itential Platform and Adapter NSO.
-</Step>
+  <Step>
+    Start Itential Platform and Adapter NSO.
+  </Step>
+  <Step>
+    Connect them with the default `admin` username and `admin` password.
 
-<Step>
-  Connect them with the default `admin` username and `admin` password.
+    <Frame caption="Figure 1">
+      ![Figure 01](https://cdn.document360.io/608a5b1c-c031-48b8-8c28-fe71e0b4e64a/Images/Documentation/1_inital_setup_nso_with_admin.png?sv=2022-11-02&spr=https&st=2025-11-03T13%3A39%3A02Z&se=2025-11-03T13%3A50%3A02Z&sr=c&sp=r&sig=LxzwaavGSvKZeKuSoA1YWPlB3Eg0PtkZ%2FKEl18en9P4%3D)
+    </Frame>
+  </Step>
+  <Step>
+    Check the connection status from **Admin Essentials** → **Profiles** → **Adapters**. Status should show as "Running" and connection as "Online".
 
+    <Frame caption="Figure 2">
+      ![Figure 02](https://cdn.document360.io/608a5b1c-c031-48b8-8c28-fe71e0b4e64a/Images/Documentation/2_nso_connected_green.png?sv=2022-11-02&spr=https&st=2025-11-03T14%3A53%3A24Z&se=2025-11-03T15%3A04%3A24Z&sr=c&sp=r&sig=FgXUKsRyzpKFYQQ9gE2FrbxEGo4Da8GEA6N5ulHGnaY%3D)
+    </Frame>
+  </Step>
+  <Step>
+    Next, create a new user in NSO with the name “client”.
 
-<Frame caption="Figure 1">
-	![Figure 01](https://cdn.document360.io/608a5b1c-c031-48b8-8c28-fe71e0b4e64a/Images/Documentation/1_inital_setup_nso_with_admin.png?sv=2022-11-02&spr=https&st=2025-11-03T13%3A39%3A02Z&se=2025-11-03T13%3A50%3A02Z&sr=c&sp=r&sig=LxzwaavGSvKZeKuSoA1YWPlB3Eg0PtkZ%2FKEl18en9P4%3D)
-</Frame>
-</Step>
-<Step>
-Check the connection status from **Admin Essentials** → **Profiles** → **Adapters**. Status should show as "Running" and connection as "Online".
-<Frame caption="Figure 2">
-	![Figure 02](https://cdn.document360.io/608a5b1c-c031-48b8-8c28-fe71e0b4e64a/Images/Documentation/2_nso_connected_green.png?sv=2022-11-02&spr=https&st=2025-11-03T14%3A53%3A24Z&se=2025-11-03T15%3A04%3A24Z&sr=c&sp=r&sig=FgXUKsRyzpKFYQQ9gE2FrbxEGo4Da8GEA6N5ulHGnaY%3D)
-</Frame>
-</Step>
-<Step>
-Next, create a new user in NSO with the name “client”.
-<Frame caption="Figure 3">
+    <Frame caption="Figure 3">
+      ![Figure 03](https://cdn.document360.io/608a5b1c-c031-48b8-8c28-fe71e0b4e64a/Images/Documentation/4_new_user_in_nso.png?sv=2022-11-02&spr=https&st=2025-11-03T14%3A53%3A24Z&se=2025-11-03T15%3A04%3A24Z&sr=c&sp=r&sig=FgXUKsRyzpKFYQQ9gE2FrbxEGo4Da8GEA6N5ulHGnaY%3D)
+    </Frame>
+  </Step>
+  <Step>
+    Change the **Adapter NSO** properties credentials to the newly created user in NSO (username and password).
 
-	![Figure 03](https://cdn.document360.io/608a5b1c-c031-48b8-8c28-fe71e0b4e64a/Images/Documentation/4_new_user_in_nso.png?sv=2022-11-02&spr=https&st=2025-11-03T14%3A53%3A24Z&se=2025-11-03T15%3A04%3A24Z&sr=c&sp=r&sig=FgXUKsRyzpKFYQQ9gE2FrbxEGo4Da8GEA6N5ulHGnaY%3D)
-</Frame>
-</Step>
-<Step>
-  Change the **Adapter NSO** properties credentials to the newly created user in NSO (username and password).
+    <Frame caption="Figure 4">
+      ![Figure 04](https://cdn.document360.io/608a5b1c-c031-48b8-8c28-fe71e0b4e64a/Images/Documentation/5_Try_with_client_user_.png?sv=2022-11-02&spr=https&st=2025-11-03T14%3A53%3A24Z&se=2025-11-03T15%3A04%3A24Z&sr=c&sp=r&sig=FgXUKsRyzpKFYQQ9gE2FrbxEGo4Da8GEA6N5ulHGnaY%3D)
+    </Frame>
+  </Step>
+  <Step>
+    Go back and check the connection status from **Admin Essentials** → **Profiles** → **Adapters**. Status should show as "Running" and connection as "Online".
 
-<Frame caption="Figure 4">
-	![Figure 04](https://cdn.document360.io/608a5b1c-c031-48b8-8c28-fe71e0b4e64a/Images/Documentation/5_Try_with_client_user_.png?sv=2022-11-02&spr=https&st=2025-11-03T14%3A53%3A24Z&se=2025-11-03T15%3A04%3A24Z&sr=c&sp=r&sig=FgXUKsRyzpKFYQQ9gE2FrbxEGo4Da8GEA6N5ulHGnaY%3D)
-</Frame>
-</Step>
-<Step>
-Go back and check the connection status from **Admin Essentials** → **Profiles** → **Adapters**. Status should show as "Running" and connection as "Online".
-<Frame caption="Figure 5">
-	![Figure 05](https://cdn.document360.io/608a5b1c-c031-48b8-8c28-fe71e0b4e64a/Images/Documentation/6_client_user_shows_green_connection.png?sv=2022-11-02&spr=https&st=2025-11-03T14%3A53%3A24Z&se=2025-11-03T15%3A04%3A24Z&sr=c&sp=r&sig=FgXUKsRyzpKFYQQ9gE2FrbxEGo4Da8GEA6N5ulHGnaY%3D)
-</Frame>
-</Step>
-<Step>
-Go to NSO and delete the `client` user.
-<Frame caption="Figure 6">
-	![Figure 06](https://cdn.document360.io/608a5b1c-c031-48b8-8c28-fe71e0b4e64a/Images/Documentation/7_delete_client_user_from_nso.png?sv=2022-11-02&spr=https&st=2025-11-03T14%3A53%3A24Z&se=2025-11-03T15%3A04%3A24Z&sr=c&sp=r&sig=FgXUKsRyzpKFYQQ9gE2FrbxEGo4Da8GEA6N5ulHGnaY%3D)
-</Frame>
-</Step>
-<Step>
-Check the connection status from **Admin Essentials** → **Profiles** → **Adapters**. Status should now show as "Running" and connection as "Degraded".
-<Frame caption="Figure 7">
-	![Figure 08](https://cdn.document360.io/608a5b1c-c031-48b8-8c28-fe71e0b4e64a/Images/Documentation/09_adapter_shows_degraded_status_.png?sv=2022-11-02&spr=https&st=2025-11-03T14%3A53%3A24Z&se=2025-11-03T15%3A04%3A24Z&sr=c&sp=r&sig=FgXUKsRyzpKFYQQ9gE2FrbxEGo4Da8GEA6N5ulHGnaY%3D)
-</Frame>
-</Step>
+    <Frame caption="Figure 5">
+      ![Figure 05](https://cdn.document360.io/608a5b1c-c031-48b8-8c28-fe71e0b4e64a/Images/Documentation/6_client_user_shows_green_connection.png?sv=2022-11-02&spr=https&st=2025-11-03T14%3A53%3A24Z&se=2025-11-03T15%3A04%3A24Z&sr=c&sp=r&sig=FgXUKsRyzpKFYQQ9gE2FrbxEGo4Da8GEA6N5ulHGnaY%3D)
+    </Frame>
+  </Step>
+  <Step>
+    Go to NSO and delete the `client` user.
+
+    <Frame caption="Figure 6">
+      ![Figure 06](https://cdn.document360.io/608a5b1c-c031-48b8-8c28-fe71e0b4e64a/Images/Documentation/7_delete_client_user_from_nso.png?sv=2022-11-02&spr=https&st=2025-11-03T14%3A53%3A24Z&se=2025-11-03T15%3A04%3A24Z&sr=c&sp=r&sig=FgXUKsRyzpKFYQQ9gE2FrbxEGo4Da8GEA6N5ulHGnaY%3D)
+    </Frame>
+  </Step>
+  <Step>
+    Check the connection status from **Admin Essentials** → **Profiles** → **Adapters**. Status should now show as "Running" and connection as "Degraded".
+
+    <Frame caption="Figure 7">
+      ![Figure 08](https://cdn.document360.io/608a5b1c-c031-48b8-8c28-fe71e0b4e64a/Images/Documentation/09_adapter_shows_degraded_status_.png?sv=2022-11-02&spr=https&st=2025-11-03T14%3A53%3A24Z&se=2025-11-03T15%3A04%3A24Z&sr=c&sp=r&sig=FgXUKsRyzpKFYQQ9gE2FrbxEGo4Da8GEA6N5ulHGnaY%3D)
+    </Frame>
+  </Step>
 </Steps>
